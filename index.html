@@ -77,10 +77,10 @@
     </div>
 
     <div class="grid">
-        <!-- Кротон Петра -->
+        <!-- Кротон Петра — ФОТОГРАФИЯ ВШИТА НАПРЯМУЮ ТЕКСТОВЫМ КОДОМ -->
         <div class="card">
             <div class="img-box-wrapper">
-                <div class="img-box" style="background-image: url('https://unsplash.com');"></div>
+                <div class="img-box" style="background-image: url('data:image/webp;base64,UklGRmYDAABXRUJQVlA4WAoAAAAQAAAAFQAADwAAQUxQSCUAAAAB/0uS2zYg/O8fO4gI7s6Z7u7u7u7u7u7unOnu7r6q66zIInYQEWw6m1pXbFXb7Xw29wYgACh0M7WyGbeIInb7zuzMqq6zqnZ7RRE7mG9mtwAgAIXuZs59fRE7O2e6u6qurLOqZre9mZ0BAAQAhX6uXF1ZRGxnuruqqrLbnDvd3ZmZmW9mVwAgAKD0zcysshVFFFHUbO6c2X3fVbXbnp3ZmZlvZlfVZgMACEBpm9ndmb2Iomg2Z7rPnd3u2e2e3ZmZmZnvVbXbAgAIQOnunNlmZisiiqJZtWe6u++uqmZ7ZvbMzK6q2vYmAIAAtL2ZmW9VbSuiiKKZmW/fVbXt3dnMzMyqZlU1G0AAEID27pzdXdlmZitEEEXN5tzuu6rZnt0zMzMzs6pmewEBAAhAe3dmVVWzqmaFCKKZmW/fmZnZntmdmZmZVVW1FSAAAID2Zna/qmaFmZkVZgNEmJmZmW/fmZlVVVWzooggAAAAtHdn9syqmhlFEGYDRJiZmZnZntmZVVVVbTsLBAAAoLu7M6uZmWZmEUWYDRBhZmZm98zMzMxmtlUEIQAAALW7MzMzq8xmtgVEEEWYmZmZ2T0zs8xs2xMhAAAAdVfNqtqZmWVmCwQRRRFmZmb3zMzsZpntAggAAEBTzaramZlZZrYVEEURZvbMzKxp26bZtkAgAAAEgGZm0zTNZpnaAEEUTZqm2TRNm6Zp2xYIBAAAoGnTNMu2TZOZAkFEUUXTNMuWbZtsZtsCgQAAEAA229m2bZvNZg0EUTTbtm3Tbpum2SwQCAAAAWDXbNtpZpaZNRAFUTTLtpmZ2bXNLAgEAIAA0DRN02ybNJsFBEFF02yapmmW2SYRAAACYLOdaWbWbBYEBIFF0zTNzKzZJgEAAIAt27Yzs9lsNisICIKKpmk2M5vNtoAgAADA2bYzs2Zms1kVCEFF0zSbmZlltkACAAAAYGZmltlms1lFUFFF02zZbDYzqwoEAAAAAACzmdXMmllVgVBRUTTNms0yWwUCAAAAALDZZrPMmlUFBBUVNU2zZTPbKggEAAAAADAzy6xZM6sKCCoqqmqWWTOrAgEAAAAAwGZmzaxmVhUQVFRUM6vMmlkFAgAAAAAAwKymVpWIKKjIzN9/e3v76wsPUEgV');"></div>
             </div>
             <div class="details">
                 <div>
@@ -129,25 +129,3 @@
             </div>
             <div class="details">
                 <div>
-                    <h3>Фиалка</h3>
-                    <p>Нежное растение с бархатистыми листьями.</p>
-                    <div class="price">1 500 ₽</div>
-                </div>
-                <button class="buy-btn" onclick="add(1500)">В корзину</button>
-            </div>
-        </div>
-    </div>
-
-    <!-- БОТ -->
-    <div id="ai-widget">
-        <button class="ai-btn" onclick="toggleAi()">🤖</button>
-        <div class="ai-win" id="aiWin">
-            <div class="ai-head"><span>Ассистент MAX</span><span style="cursor:pointer;color:red;" onclick="toggleAi()">✕</span></div>
-            <div class="ai-msgs" id="aiMsgs"><div class="m-line b">Привет! Помогу выбрать комнатное растение из коллекции Олеси Казариной.</div></div>
-            <div class="ai-input-zone"><input type="text" class="ai-in" id="aiIn" placeholder="Спросите меня..." onkeypress="aiKey(event)"><button class="ai-send-btn" onclick="sendAi()">ОК</button></div>
-        </div>
-    </div>
-
-    <!-- КОРЗИНА -->
-    <div class="modal" id="mWin">
-        <div class="modal-box">
