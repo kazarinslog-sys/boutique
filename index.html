@@ -4,35 +4,50 @@
     <meta charset="UTF-8">
     <title>Олеся Казарина — Интерактивная Панель</title>
     <style id="live-styles">
-        :root { --bg: #0c0418; --card: #160a2c; --accent: #ff007f; --text: #ffffff; --text-muted: #a395b8; }
+        :root { 
+            --bg: #0c0418; 
+            --card: #160a2c; 
+            --accent: #ff007f; 
+            --text: #ffffff; 
+            --text-muted: #a395b8;
+        }
         * { box-sizing: border-box; margin: 0; padding: 0; font-family: system-ui, sans-serif; }
         body { background: var(--bg); color: var(--text); padding: 110px 4% 60px; background-image: radial-gradient(circle at 50% 0%, rgba(255,0,127,0.1) 0%, transparent 60%); }
+        
         header { display: flex; justify-content: space-between; align-items: center; position: fixed; top: 0; left: 0; width: 100%; padding: 20px 6%; background: rgba(12,4,24,0.95); backdrop-filter: blur(10px); z-index: 10; border-bottom: 2px solid var(--accent); box-shadow: 0 0 15px var(--accent); }
         .logo { font-size: 24px; font-weight: 800; text-shadow: 0 0 10px var(--accent); }
         .sublogo { font-size: 10px; color: var(--accent); letter-spacing: 2px; text-transform: uppercase; margin-top: 2px; font-weight: bold; }
+        
         .ai-panel { max-width: 800px; margin: 0 auto 40px; background: #110524; border: 1px dashed var(--accent); padding: 20px; text-align: center; box-shadow: 0 0 15px rgba(255,0,127,0.1); }
         .ai-panel h3 { font-size: 13px; text-transform: uppercase; letter-spacing: 2px; color: var(--accent); margin-bottom: 15px; text-shadow: 0 0 5px var(--accent); }
         .panel-btns { display: flex; justify-content: center; gap: 15px; flex-wrap: wrap; }
+
         .btn { background: transparent; border: 2px solid var(--accent); color: var(--accent); padding: 10px 20px; cursor: pointer; font-weight: bold; text-transform: uppercase; font-size: 11px; text-shadow: 0 0 5px var(--accent); transition: 0.3s; }
         .btn:hover { background: var(--accent); color: #000; box-shadow: 0 0 20px var(--accent); }
-        .buy-btn { background: transparent; border: 1px solid rgba(255,255,255,0.2); color: #fff; padding: 12px; width: 100%; cursor: pointer; text-transform: uppercase; font-size: 11px; font-weight: bold; margin-top: 15px; }
+        
+        .buy-btn { background: transparent; border: 1px solid rgba(255,255,255,0.2); color: #fff; padding: 12px; width: 100%; cursor: pointer; text-transform: uppercase; font-size: 11px; font-weight: bold; margin-top: 15px; transition: 0.3s; }
         .buy-btn:hover { border-color: var(--accent); color: var(--accent); box-shadow: 0 0 15px var(--accent); }
-        .welcome { max-width: 800px; margin: 30px auto 30px; text-align: center; }
+
+        .welcome { max-width: 800px; margin: 30px auto 30px; text-align: center; width: 100%; }
         .welcome h2 { font-size: 36px; margin-bottom: 15px; text-shadow: 0 0 10px var(--accent); }
         .welcome p { color: var(--text-muted); font-size: 15px; }
+
         .grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; width: 100%; max-width: 1400px; margin: 0 auto; }
         @media (max-width: 1024px) { .grid { grid-template-columns: repeat(2, 1fr); } }
         @media (max-width: 600px) { .grid { grid-template-columns: 1fr; } }
-        .card { background: var(--card); border: 1px solid rgba(255,0,127,0.1); overflow: hidden; display: flex; flex-direction: column; }
+
+        .card { background: var(--card); border: 1px solid rgba(255,0,127,0.1); overflow: hidden; transition: 0.3s; display: flex; flex-direction: column; }
         .card:hover { border-color: var(--accent); box-shadow: 0 0 25px rgba(255,0,127,0.4); transform: translateY(-4px); }
+        
         .img-box-wrapper { width: 100%; height: 260px; background: #07020f; display: flex; align-items: center; justify-content: center; border-bottom: 1px solid rgba(255,0,127,0.1); position: relative; overflow: hidden; }
-        .img-box { width: 100%; height: 100%; background-size: cover; background-position: center; background-repeat: no-repeat; transition: 0.5s; display: flex; align-items: center; justify-content: center; }
-        .card:hover .img-box { transform: scale(1.05); }
-        .img-box svg { width: 50%; height: 50%; filter: drop-shadow(0 0 8px var(--accent)); }
+        .img-box { width: 100%; height: 100%; background-size: cover; background-position: center; background-repeat: no-repeat; transition: 0.5s; filter: brightness(0.85); }
+        .card:hover .img-box { transform: scale(1.05); filter: brightness(1.05); }
+
         .details { padding: 18px; background: #120724; flex-grow: 1; display: flex; flex-direction: column; justify-content: space-between; }
         .details h3 { font-size: 19px; margin-bottom: 6px; }
         .details p { color: var(--text-muted); font-size: 12px; line-height: 1.4; height: 38px; margin-bottom: 15px; }
         .price { font-size: 18px; font-weight: bold; color: var(--accent); text-shadow: 0 0 5px var(--accent); }
+
         .modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); z-index: 20; align-items: center; justify-content: center; }
         .modal.active { display: flex; }
         .modal-box { background: var(--card); padding: 40px; width: 400px; border: 2px solid var(--accent); box-shadow: 0 0 25px var(--accent); }
@@ -46,14 +61,14 @@
     </header>
     <div class="welcome"><h2>Эстетика природы в вашем доме</h2><p>Бережно выращенные комнатные растения премиального качества.</p></div>
 
-    <!-- ПУЛЬТ ИИ (ПОЛНОСТЬЮ ИСПРАВЛЕННЫЙ) -->
     <div class="ai-panel">
         <h3>Панель ИИ-Управления Кодом (MAX)</h3>
         <div class="panel-btns">
             <button class="btn" onclick="runAiCode('green')">🟢 Изменить CSS: Зеленый Неон</button>
             <button class="btn" onclick="runAiCode('blue')">🔵 Изменить CSS: Синий Неон</button>
+            <button class="btn" onclick="runAiCode('pink')">🌸 Изменить CSS: Розовый Неон</button>
             <button class="btn" onclick="runAiCode('violet')">🔮 HTML: Встроить Фиалку</button>
-            <button class="btn" onclick="runAiCode('adenium')">🌸 HTML: Встроить Адениум</button>
+            <button class="btn" onclick="runAiCode('adenium')">🌿 HTML: Встроить Адениум</button>
         </div>
     </div>
 
@@ -86,31 +101,22 @@
             document.getElementById('mSum').textContent = cart.total.toLocaleString() + " ₽";
         }
         
-        // ТОЧНЫЙ НАДЕЖНЫЙ ДВИЖОК ИЗМЕНЕНИЯ СТРУКТУРЫ СТРАНИЦЫ
         function runAiCode(command) {
-            if (command === 'green') {
-                document.documentElement.style.setProperty('--accent', '#00ff66');
-            } 
-            else if (command === 'blue') {
-                document.documentElement.style.setProperty('--accent', '#00d2ff');
-            }
+            if (command === 'green') { document.documentElement.style.setProperty('--accent', '#00ff66'); } 
+            else if (command === 'blue') { document.documentElement.style.setProperty('--accent', '#00d2ff'); }
+            else if (command === 'pink') { document.documentElement.style.setProperty('--accent', '#ff007f'); }
             else if (command === 'violet' && !document.getElementById('card-violet')) {
                 const grid = document.getElementById('plants-grid');
                 grid.innerHTML += `
                     <div class="card" id="card-violet">
-                        <div class="img-box-wrapper"><div class="img-box"><svg viewBox="0 0 100 100" fill="none" xmlns="http://w3.org"><circle cx="50" cy="50" r="15" fill="%23ff007f"/><circle cx="35" cy="40" r="12" fill="%23ff007f"/><circle cx="65" cy="40" r="12" fill="%23ff007f"/></svg></div></div>
-                        <div class="details"><div><h3>Фиалка</h3><p>Добавлено ИИ.</p><div class="price">1 500 ₽</div></div><button class="buy-btn" onclick="add(1500)">В корзину</button></div>
+                        <div class="img-box-wrapper"><div class="img-box" style="background-image: url('data:image/svg+xml;utf8,<svg xmlns=\'http://w3.org\' viewBox=\'0 0 100 100\' fill=\'none\'><rect width=\'100\' height=\'100\' fill=\'%230e031c\'/><path d=\'M35 70 L65 70 L60 90 L40 90 Z\' fill=\'%23160a2c\' stroke=\'%23ff007f\' stroke-width=\'2\'/><circle cx=\'50\' cy=\'50\' r=\'12\' fill=\'%23ff007f\'/><circle cx=\'40\' cy=\'42\' r=\'10\' fill=\'%23ff007f\'/><circle cx=\'60\' cy=\'45\' r=\'10\' fill=\'%23ff007f\'/><circle cx=\'50\' cy=\'50\' r=\'3\' fill=\'%23ffffff\' opacity=\'0.6\'/></svg>');"></div></div>
+                        <div class="details"><div><h3>Фиалка Узумбарская</h3><p>Добавлено ИИ. Пышные сочные листья.</p><div class="price">1 500 ₽</div></div><button class="buy-btn" onclick="add(1500)">В корзину</button></div>
                     </div>`;
+                // Мгновенно переподсвечиваем линии SVG под выбранный цвет неона
+                const currentAccent = getComputedStyle(document.documentElement).getPropertyValue('--accent').trim();
+                const cards = document.querySelectorAll('.img-box svg *');
+                cards.forEach(el => {
+                    if(el.getAttribute('stroke') === '#ff007f') el.setAttribute('stroke', currentAccent);
+                    if(el.getAttribute('fill') === '#ff007f') el.setAttribute('fill', currentAccent);
+                });
             }
-            else if (command === 'adenium' && !document.getElementById('card-adenium')) {
-                const grid = document.getElementById('plants-grid');
-                grid.innerHTML += `
-                    <div class="card" id="card-adenium">
-                        <div class="img-box-wrapper"><div class="img-box"><svg viewBox="0 0 100 100" fill="none" xmlns="http://w3.org"><path d="M50 85 Q45 50 55 20" stroke="%23ff007f" stroke-width="4"/><circle cx="55" cy="15" r="8" fill="%23ff007f"/></svg></div></div>
-                        <div class="details"><div><h3>Адениум</h3><p>Добавлено ИИ.</p><div class="price">3 400 ₽</div></div><button class="buy-btn" onclick="add(3400)">В корзину</button></div>
-                    </div>`;
-            }
-        }
-    </script>
-</body>
-</html>
