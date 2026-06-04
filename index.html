@@ -86,7 +86,7 @@
         <!-- Кротон Петра -->
         <div class="card">
             <div class="img-box-wrapper">
-                <div class="img-box" style="background-image: url('https://unsplash.com');"></div>
+                <div class="img-box" style="background-image: url('croton.jpg');"></div>
             </div>
             <div class="details">
                 <div>
@@ -116,7 +116,7 @@
         <!-- Фаленопсис -->
         <div class="card">
             <div class="img-box-wrapper">
-                <div class="img-box" style="background-image: url('https://unsplash.com');"></div>
+                <div class="img-box" style="background-image: url('orchid.jpg');"></div>
             </div>
             <div class="details">
                 <div>
@@ -149,9 +149,11 @@
         <button class="ai-btn" onclick="toggleAi()">🤖</button>
         <div class="ai-win" id="aiWin">
             <div class="ai-head"><span>Ассистент MAX</span><span style="cursor:pointer;color:red;" onclick="toggleAi()">✕</span></div>
-            <div class="ai-msgs" id="aiMsgs"><div class="m-line b">Привет! Я встроенный ИИ-помощник Max. Помогу выбрать комнатное растение из коллекции Олеси Казариной. О каком цветке (Адениум, Кротон, Phalaenopsis, Фиалка) рассказать?</div></div>
+            <div class="ai-msgs" id="aiMsgs"><div class="m-line b">Привет! Я встроенный ИИ-помощник Max. Помогу выбрать комнатное растение из коллекции Олеси Казариной. О каком цветке (Адениум, Кротон, Фаленопсис, Фиалка) рассказать?</div></div>
             <div class="ai-input-zone"><input type="text" class="ai-in" id="aiIn" placeholder="Спросите меня об уходе..." onkeypress="aiKey(event)"><button class="ai-send-btn" onclick="sendAi()">ОК</button></div>
         </div>
     </div>
 
     <!-- КОРЗИНА -->
+    <div class="modal" id="mWin">
+        <div class="modal-box">
