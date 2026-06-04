@@ -2,7 +2,7 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <title>Олеся Казарина — Комнатные растения с любовью</title>
+    <title>Комнатные растения с любовью</title>
     <style>
         :root { --bg: #0c0418; --card: #160a2c; --accent: #ff007f; --text: #ffffff; --text-muted: #a395b8; }
         * { box-sizing: border-box; margin: 0; padding: 0; font-family: system-ui, sans-serif; }
@@ -15,12 +15,8 @@
         .btn { background: transparent; border: 2px solid var(--accent); color: var(--accent); padding: 10px 20px; cursor: pointer; font-weight: bold; text-transform: uppercase; font-size: 11px; text-shadow: 0 0 5px var(--accent); }
         .btn:hover { background: var(--accent); color: #000; box-shadow: 0 0 20px var(--accent); text-shadow: none; }
         
-        .buy-btn { background: transparent; border: 1px solid rgba(255,255,255,0.2); color: #fff; padding: 10px; width: 100%; cursor: pointer; text-transform: uppercase; font-size: 11px; font-weight: bold; margin-top: 8px; }
+        .buy-btn { background: transparent; border: 1px solid rgba(255,255,255,0.2); color: #fff; padding: 12px; width: 100%; cursor: pointer; text-transform: uppercase; font-size: 11px; font-weight: bold; margin-top: 15px; transition: 0.3s; }
         .buy-btn:hover { border-color: var(--accent); color: var(--accent); box-shadow: 0 0 15px var(--accent); }
-        
-        .upload-label { display: block; background: rgba(255, 0, 127, 0.1); border: 1px dashed var(--accent); color: var(--accent); padding: 8px; width: 100%; text-align: center; font-size: 10px; font-weight: bold; text-transform: uppercase; cursor: pointer; transition: 0.3s; letter-spacing: 1px; }
-        .upload-label:hover { background: rgba(255, 0, 127, 0.25); box-shadow: 0 0 10px rgba(255,0,127,0.3); }
-        .file-input { display: none; }
 
         .welcome { max-width: 800px; margin: 30px auto 50px; text-align: center; width: 100%; }
         .welcome h2 { font-size: 36px; margin-bottom: 15px; text-shadow: 0 0 10px var(--accent); }
@@ -33,13 +29,14 @@
         .card { background: var(--card); border: 1px solid rgba(255,0,127,0.1); overflow: hidden; transition: 0.3s; display: flex; flex-direction: column; }
         .card:hover { border-color: var(--accent); box-shadow: 0 0 25px rgba(255,0,127,0.4); transform: translateY(-4px); }
         
-        .img-box-wrapper { width: 100%; height: 240px; background: #0c0418; display: flex; align-items: center; justify-content: center; border-bottom: 1px solid rgba(255,0,127,0.1); position: relative; font-size: 90px; filter: drop-shadow(0 0 15px var(--accent)); transition: 0.3s; background-size: cover; background-position: center; background-repeat: no-repeat; }
-        .card:hover .img-box-wrapper { transform: scale(1.03); }
+        .img-box-wrapper { width: 100%; height: 260px; background: #07020f; display: flex; align-items: center; justify-content: center; border-bottom: 1px solid rgba(255,0,127,0.1); position: relative; overflow: hidden; }
+        .img-box { width: 100%; height: 100%; background-size: cover; background-position: center; background-repeat: no-repeat; display: flex; align-items: center; justify-content: center; font-size: 80px; filter: drop-shadow(0 0 10px var(--accent)); transition: 0.5s; }
+        .card:hover .img-box { transform: scale(1.05); }
 
         .details { padding: 18px; background: #120724; flex-grow: 1; display: flex; flex-direction: column; justify-content: space-between; }
         .details h3 { font-size: 19px; margin-bottom: 6px; }
         .details p { color: var(--text-muted); font-size: 12px; line-height: 1.4; height: 38px; margin-bottom: 15px; overflow: hidden; }
-        .price { font-size: 18px; font-weight: bold; color: var(--accent); text-shadow: 0 0 5px var(--accent); margin-bottom: 12px; }
+        .price { font-size: 18px; font-weight: bold; color: var(--accent); text-shadow: 0 0 5px var(--accent); margin-bottom: 5px; }
 
         .modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); z-index: 20; align-items: center; justify-content: center; }
         .modal.active { display: flex; }
@@ -65,7 +62,7 @@
 
     <header>
         <div>
-            <div class="logo">Олеся Казарина</div>
+            <div class="logo" id="main-title">Олеся Казарина</div>
             <div class="sublogo">комнатные растения с любовью</div>
         </div>
         <div>
@@ -82,65 +79,61 @@
     <div class="grid">
         <!-- Кротон Петра -->
         <div class="card">
-            <div class="img-box-wrapper" id="box-croton">🍁</div>
+            <div class="img-box-wrapper">
+                <div class="img-box" id="pic-croton">🍁</div>
+            </div>
             <div class="details">
                 <div>
                     <h3>Кротон Петра</h3>
                     <p>Яркое лиственное растение с огненной палитрой.</p>
                     <div class="price">2 900 ₽</div>
                 </div>
-                <div>
-                    <label class="upload-label">📷 Изменить фото<input type="file" class="file-input" accept="image/*" onchange="loadPhoto(event, 'box-croton')"></label>
-                    <button class="buy-btn" onclick="add(2900)">В корзину</button>
-                </div>
+                <button class="buy-btn" onclick="add(2900)">В корзину</button>
             </div>
         </div>
 
         <!-- Адениум -->
         <div class="card">
-            <div class="img-box-wrapper" id="box-adenium">🌸</div>
+            <div class="img-box-wrapper">
+                <div class="img-box" id="pic-adenium">🌸</div>
+            </div>
             <div class="details">
                 <div>
                     <h3>Адениум</h3>
                     <p>Изящный суккулент со скульптурным стволом.</p>
                     <div class="price">3 400 ₽</div>
                 </div>
-                <div>
-                    <label class="upload-label">📷 Изменить фото<input type="file" class="file-input" accept="image/*" onchange="loadPhoto(event, 'box-adenium')"></label>
-                    <button class="buy-btn" onclick="add(3400)">В корзину</button>
-                </div>
+                <button class="buy-btn" onclick="add(3400)">В корзину</button>
             </div>
         </div>
 
         <!-- Фаленопсис -->
         <div class="card">
-            <div class="img-box-wrapper" id="box-phalaenopsis">💮</div>
+            <div class="img-box-wrapper">
+                <div class="img-box" id="pic-orchid">💮</div>
+            </div>
             <div class="details">
                 <div>
                     <h3>Фаленопсис</h3>
                     <p>Высокая орхидея — эталон минимализма.</p>
                     <div class="price">4 200 ₽</div>
                 </div>
-                <div>
-                    <label class="upload-label">📷 Изменить фото<input type="file" class="file-input" accept="image/*" onchange="loadPhoto(event, 'box-phalaenopsis')"></label>
-                    <button class="buy-btn" onclick="add(4200)">В корзину</button>
-                </div>
+                <button class="buy-btn" onclick="add(4200)">В корзину</button>
             </div>
         </div>
 
         <!-- Фиалка -->
         <div class="card">
-            <div class="img-box-wrapper" id="box-violet">🔮</div>
+            <div class="img-box-wrapper">
+                <div class="img-box" id="pic-violet">🔮</div>
+            </div>
             <div class="details">
                 <div>
                     <h3>Фиалка</h3>
                     <p>Нежное растение с бархатистыми листьями.</p>
                     <div class="price">1 500 ₽</div>
                 </div>
-                <div>
-                    <label class="upload-label">📷 Изменить фото<input type="file" class="file-input" accept="image/*" onchange="loadPhoto(event, 'box-violet')"></label>
-                    <button class="buy-btn" onclick="add(1500)">В корзину</button>
-                </div>
+                <button class="buy-btn" onclick="add(1500)">В корзину</button>
             </div>
         </div>
     </div>
@@ -149,4 +142,14 @@
     <div id="ai-widget">
         <button class="ai-btn" onclick="toggleAi()">🤖</button>
         <div class="ai-win" id="aiWin">
+            <div class="ai-head"><span>Ассистент MAX</span><span style="cursor:pointer;color:red;" onclick="toggleAi()">✕</span></div>
+            <div class="ai-msgs" id="aiMsgs"><div class="m-line b">Привет! Помогу выбрать комнатное растение из коллекции Олеси Казариной.</div></div>
+            <div class="ai-input-zone"><input type="text" class="ai-in" id="aiIn" placeholder="Спросите меня..." onkeypress="aiKey(event)"><button class="ai-send-btn" onclick="sendAi()">ОК</button></div>
+        </div>
+    </div>
 
+    <!-- КОРЗИНА -->
+    <div class="modal" id="mWin">
+        <div class="modal-box">
+            <div style="display: flex; justify-content: space-between; margin-bottom: 20px;"><h3 style="color: var(--accent);">Ваш заказ</h3><span style="cursor: pointer; font-weight: bold; color: red;" onclick="openModal(false)">✕</span></div>
+            <div style="background: rgba(0,0,0,0.3); padding: 15px; margin-bottom: 20px; font-size: 14px;">Позиций: <span id="mCount">0 шт.</span><br>Сумма: <span id="mSum" style="color: var(--accent); font-weight: bold;">0 ₽</span></div>
