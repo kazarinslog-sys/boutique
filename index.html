@@ -18,7 +18,6 @@
         .logo { font-size: 24px; font-weight: 800; text-shadow: 0 0 10px var(--accent); }
         .sublogo { font-size: 10px; color: var(--accent); letter-spacing: 2px; text-transform: uppercase; margin-top: 2px; font-weight: bold; }
         
-        /* ИИ ПУЛЬТ УПРАВЛЕНИЯ КОДОМ */
         .ai-panel { max-width: 800px; margin: -20px auto 40px; background: #110524; border: 1px dashed var(--accent); padding: 20px; text-align: center; box-shadow: 0 0 15px rgba(255,0,127,0.1); }
         .ai-panel h3 { font-size: 13px; text-transform: uppercase; letter-spacing: 2px; color: var(--accent); margin-bottom: 15px; text-shadow: 0 0 5px var(--accent); }
         .panel-btns { display: flex; justify-content: center; gap: 15px; flex-wrap: wrap; }
@@ -53,6 +52,7 @@
         .modal.active { display: flex; }
         .modal-box { background: var(--card); padding: 40px; width: 400px; border: 2px solid var(--accent); box-shadow: 0 0 25px var(--accent); }
         .input { width: 100%; background: rgba(0,0,0,0.4); border: 1px solid rgba(255,255,255,0.1); padding: 12px; color: #fff; margin-bottom: 15px; }
+        .input:focus { outline: none; border-color: var(--accent); box-shadow: 0 0 10px var(--accent); }
     </style>
 </head>
 <body>
@@ -69,18 +69,18 @@
     </header>
 
     <div class="welcome">
-        <h2 id="main-heading">Эстетика природы в вашем доме</h2>
+        <h2>Эстетика природы в вашем доме</h2>
         <p>Бережно выращенные комнатные растения премиального качества.</p>
     </div>
 
-    <!-- 🤖 ИНТЕРФЕЙС ВНУТРЕННЕГО ИИ-КОДЕРА -->
+    <!-- ИНТЕРФЕЙС ИИ-ПУЛЬТА -->
     <div class="ai-panel">
-        <h3>Панель ИИ-Генерации Кода (MAX)</h3>
+        <h3>Панель ИИ-Управления Кодом (MAX)</h3>
         <div class="panel-btns">
-            <button class="btn" onclick="runAiCode('green')">🟢 Включить Зеленый Неон</button>
-            <button class="btn" onclick="runAiCode('blue')">🔵 Включить Синий Неон</button>
-            <button class="btn" onclick="runAiCode('add-violet')">🔮 HTML: Встроить Фиалку</button>
-            <button class="btn" onclick="runAiCode('add-adenium')">🌸 HTML: Встроить Адениум</button>
+            <button class="btn" onclick="runAiCode('green')">🟢 Изменить CSS: Зеленый Неон</button>
+            <button class="btn" onclick="runAiCode('blue')">🔵 Изменить CSS: Синий Неон</button>
+            <button class="btn" onclick="runAiCode('violet')">🔮 HTML: Встроить Фиалку</button>
+            <button class="btn" onclick="runAiCode('adenium')">🌸 HTML: Встроить Адениум</button>
         </div>
     </div>
 
@@ -131,28 +131,18 @@
             document.getElementById('mSum').textContent = cart.total.toLocaleString() + " ₽";
         }
         function send() {
-            alert("Заказ принят!"); openModal(false);
+            const n = document.getElementById('uName').value; const p = document.getElementById('uPhone').value;
+            if(!n || !p) { alert("Заполните поля!"); return; }
+            alert(`Спасибо, ${n}! Заказ на сумму ${cart.total.toLocaleString()} ₽ принят.`);
+            cart = { count: 0, total: 0 }; document.getElementById('cCount').textContent = "0"; openModal(false);
         }
 
-        // КНОПОЧНЫЙ ДВИЖОК ИИ-ИНЖЕНЕРА (МЕНЯЕТ CSS И HTML НА ЛЕТУ)
+        // РАБОЧИЙ ИИ-ДВИЖОК С ВШИТОЙ НЕУЯЗВИМОЙ ГРАФИКОЙ БЕЗ ССЫЛОК
         function runAiCode(command) {
             const styles = document.getElementById('live-styles');
             const grid = document.getElementById('plants-grid');
-
-            if (command === 'green') {
-                styles.innerHTML = styles.innerHTML.replace(/--accent:\s*[^;]+/g, "--accent: #00ff66");
-                alert("ИИ переписал глобальный CSS-код! Включен зеленый неон.");
-            } 
-            else if (command === 'blue') {
-                styles.innerHTML = styles.innerHTML.replace(/--accent:\s*[^;]+/g, "--accent: #00d2ff");
-                alert("ИИ вошел в стили и изменил код! Включен синий неон.");
-            }
-            else if (command === 'add-violet') {
-                if (!document.getElementById('card-violet')) {
-                    grid.innerHTML += `
-                        <div class="card" id="card-violet">
-                            <div class="img-box-wrapper"><div class="img-box" style="background-image: url('https://unsplash.com');"></div></div>
-                            <div class="details">
-                                <div><h3>Фиалка Узумбарская</h3><p>HTML-код сгенерирован ИИ. Бархатные листья.</p><div class="price">1 500 ₽</div></div>
-                                <button class="buy-btn" onclick="add(1500)">В корзину</button>
-                            </div>
+            if (command === 'green') { styles.innerHTML = styles.innerHTML.replace(/--accent:\s*[^;]+/g, "--accent: #00ff66"); } 
+            else if (command === 'blue') { styles.innerHTML = styles.innerHTML.replace(/--accent:\s*[^;]+/g, "--accent: #00d2ff"); }
+            else if (command === 'violet' && !document.getElementById('card-violet')) {
+                grid.innerHTML += `
+                    <div class="card" id="card-violet">
