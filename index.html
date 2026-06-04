@@ -98,10 +98,10 @@
             </div>
         </div>
 
-        <!-- Адениум (НОВАЯ СТАБИЛЬНАЯ ССЫЛКА НА ЖИВОЕ ФОТО В ГОРШКЕ) -->
+        <!-- Адениум — ВШИТ ЦИФРОВЫМ КОДОМ БЕЗ ССЫЛОК И БЛОКИРОВОК -->
         <div class="card">
             <div class="img-box-wrapper">
-                <div class="img-box" style="background-image: url('https://unsplash.com');"></div>
+                <div class="img-box" style="background-image: url('data:image/svg+xml;utf8,<svg xmlns=\'http://w3.org\' width=\'600\' height=\'800\' viewBox=\'0 0 600 800\'><defs><linearGradient id=\'g1\' x1=\'0%\' y1=\'0%\' x2=\'100%\' y2=\'100%\'><stop offset=\'0%\' stop-color=\'%231a0b2e\'/><stop offset=\'100%\' stop-color=\'%2305010d\'/></linearGradient><radialGradient id=\'glow\'><stop offset=\'0%\' stop-color=\'%23ff007f\' stop-opacity=\'0.4\'/><stop offset=\'100%\' stop-color=\'%23ff007f\' stop-opacity=\'0\'/></radialGradient></defs><rect width=\'100%\' height=\'100%\' fill=\'url(%23g1)\'/><circle cx=\'300\' cy=\'450\' r=\'250\' fill=\'url(%23glow)\'/><path d=\'M220 700 L380 700 L350 780 L250 780 Z\' fill=\'%23110626\' stroke=\'%23ff007f\' stroke-width=\'3\'/><path d=\'M290 700 C270 550 250 480 280 320 C295 250 310 180 300 120\' stroke=\'%235c3a21\' stroke-width=\'24\' stroke-linecap=\'round\'/><path d=\'M270 480 C210 440 160 460 120 380\' stroke=\'%235c3a21\' stroke-width=\'12\' stroke-linecap=\'round\'/><path d=\'M290 380 C360 350 420 370 460 290\' stroke=\'%235c3a21\' stroke-width=\'12\' stroke-linecap=\'round\'/><circle cx=\'300\' cy=\'110\' r=\'45\' fill=\'%23ff007f\' opacity=\'0.95\'/><circle cx=\'285\' cy=\'95\' r=\'20\' fill=\'%23ffffff\' opacity=\'0.4\'/><circle cx=\'110\' cy=\'370\' r=\'40\' fill=\'%23ff007f\' opacity=\'0.9\'/><circle cx=\'470\' cy=\'280\' r=\'45\' fill=\'%23ff007f\' opacity=\'0.95\'/><circle cx=\'455\' cy=\'265\' r=\'20\' fill=\'%23ffffff\' opacity=\'0.4\'/><circle cx=\'200\' cy=\'250\' r=\'35\' fill=\'%23ff007f\' opacity=\'0.8\'/><path d=\'M180 520 Q120 480 140 400 Q200 480 180 520\' fill=\'%231dd1a1\' opacity=\'0.7\'/><path d=\'M400 440 Q460 390 420 320 Q370 400 400 440\' fill=\'%231dd1a1\' opacity=\'0.7\'/></svg>');"></div>
             </div>
             <div class="details">
                 <div>
@@ -124,36 +124,3 @@
                     <p>Высокая орхидея — эталон минимализма.</p>
                     <div class="price">4 200 ₽</div>
                 </div>
-                <button class="buy-btn" onclick="add(4200)">В корзину</button>
-            </div>
-        </div>
-
-        <!-- Фиалка (НОВАЯ СТАБИЛЬНАЯ ССЫЛКА НА ЖИВОЕ ФОТО В ГОРШКЕ) -->
-        <div class="card">
-            <div class="img-box-wrapper">
-                <div class="img-box" style="background-image: url('https://unsplash.com');"></div>
-            </div>
-            <div class="details">
-                <div>
-                    <h3>Фиалка</h3>
-                    <p>Нежное растение с бархатистыми листьями.</p>
-                    <div class="price">1 500 ₽</div>
-                </div>
-                <button class="buy-btn" onclick="add(1500)">В корзину</button>
-            </div>
-        </div>
-    </div>
-
-    <!-- БОТ MAX -->
-    <div id="ai-widget">
-        <button class="ai-btn" onclick="toggleAi()">🤖</button>
-        <div class="ai-win" id="aiWin">
-            <div class="ai-head"><span>Ассистент MAX</span><span style="cursor:pointer;color:red;" onclick="toggleAi()">✕</span></div>
-            <div class="ai-msgs" id="aiMsgs"><div class="m-line b">Привет! Я встроенный ИИ-помощник Max. Помогу выбрать комнатное растение из коллекции Олеси Казариной. О каком цветке (Адениум, Кротон, Фаленопсис, Фиалка) рассказать?</div></div>
-            <div class="ai-input-zone"><input type="text" class="ai-in" id="aiIn" placeholder="Спросите меня об уходе..." onkeypress="aiKey(event)"><button class="ai-send-btn" onclick="sendAi()">ОК</button></div>
-        </div>
-    </div>
-
-    <!-- КОРЗИНА -->
-    <div class="modal" id="mWin">
-        <div class="modal-box">
