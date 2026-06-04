@@ -21,7 +21,7 @@
         .btn { background: transparent; border: 2px solid var(--accent); color: var(--accent); padding: 10px 20px; cursor: pointer; font-weight: bold; text-transform: uppercase; font-size: 11px; text-shadow: 0 0 5px var(--accent); }
         .btn:hover { background: var(--accent); color: #000; box-shadow: 0 0 20px var(--accent); text-shadow: none; }
         
-        .buy-btn { background: transparent; border: 1px solid rgba(255,255,255,0.2); color: #fff; padding: 10px; width: 100%; cursor: pointer; text-transform: uppercase; font-size: 11px; font-weight: bold; margin-top: 8px; transition: 0.3s; }
+        .buy-btn { background: transparent; border: 1px solid rgba(255,255,255,0.2); color: #fff; padding: 12px; width: 100%; cursor: pointer; text-transform: uppercase; font-size: 11px; font-weight: bold; margin-top: 15px; transition: 0.3s; }
         .buy-btn:hover { border-color: var(--accent); color: var(--accent); box-shadow: 0 0 15px var(--accent); }
 
         .welcome { max-width: 800px; margin: 30px auto 50px; text-align: center; width: 100%; }
@@ -35,15 +35,14 @@
         .card { background: var(--card); border: 1px solid rgba(255,0,127,0.1); overflow: hidden; transition: 0.3s; display: flex; flex-direction: column; }
         .card:hover { border-color: var(--accent); box-shadow: 0 0 25px rgba(255,0,127,0.4); transform: translateY(-4px); }
         
-        .img-box-wrapper { width: 100%; height: 240px; background: #07020f; display: flex; align-items: center; justify-content: center; border-bottom: 1px solid rgba(255,0,127,0.1); position: relative; }
-        .img-box { width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; transition: 0.3s; }
-        .card:hover .img-box { transform: scale(1.05); }
-        .img-box svg { width: 55%; height: 55%; filter: drop-shadow(0 0 10px var(--accent)); }
+        .img-box-wrapper { width: 100%; height: 260px; background: #07020f; display: flex; align-items: center; justify-content: center; border-bottom: 1px solid rgba(255,0,127,0.1); position: relative; overflow: hidden; }
+        .img-box { width: 100%; height: 100%; background-size: cover; background-position: center; background-repeat: no-repeat; transition: 0.5s; filter: brightness(0.85); }
+        .card:hover .img-box { transform: scale(1.05); filter: brightness(1.05); }
 
         .details { padding: 18px; background: #120724; flex-grow: 1; display: flex; flex-direction: column; justify-content: space-between; }
         .details h3 { font-size: 19px; margin-bottom: 6px; }
         .details p { color: var(--text-muted); font-size: 12px; line-height: 1.4; height: 38px; margin-bottom: 15px; overflow: hidden; }
-        .price { font-size: 18px; font-weight: bold; color: var(--accent); text-shadow: 0 0 5px var(--accent); margin-bottom: 12px; }
+        .price { font-size: 18px; font-weight: bold; color: var(--accent); text-shadow: 0 0 5px var(--accent); margin-bottom: 5px; }
 
         .modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); z-index: 20; align-items: center; justify-content: center; }
         .modal.active { display: flex; }
@@ -51,6 +50,7 @@
         .input { width: 100%; background: rgba(0,0,0,0.4); border: 1px solid rgba(255,255,255,0.1); padding: 12px; color: #fff; margin-bottom: 15px; }
         .input:focus { outline: none; border-color: var(--accent); box-shadow: 0 0 10px var(--accent); }
 
+        /* ИИ ИНТЕЛЛЕКТ MAX */
         #ai-widget { position: fixed; bottom: 30px; right: 30px; z-index: 1000; }
         .ai-btn { width: 60px; height: 60px; border-radius: 50%; background: var(--accent); border: none; font-size: 24px; cursor: pointer; box-shadow: 0 0 15px var(--accent); display: flex; align-items: center; justify-content: center; }
         .ai-win { display: none; width: 340px; height: 420px; background: var(--card); border: 2px solid var(--accent); position: absolute; bottom: 80px; right: 0; flex-direction: column; box-shadow: 0 0 20px rgba(255,0,127,0.3); }
@@ -87,14 +87,7 @@
         <!-- Кротон Петра -->
         <div class="card">
             <div class="img-box-wrapper">
-                <div class="img-box">
-                    <svg viewBox="0 0 100 100" fill="none" xmlns="http://w3.org">
-                        <path d="M50 85 L50 45" stroke="#ff007f" stroke-width="3"/>
-                        <path d="M50 65 Q25 50 20 30 Q35 45 50 55" fill="#ff007f" opacity="0.7"/>
-                        <path d="M50 60 Q75 45 80 25 Q65 40 50 50" fill="#ff007f" opacity="0.9"/>
-                        <path d="M50 50 Q30 30 35 10 Q50 30 50 42" fill="#ff007f" opacity="0.8"/>
-                    </svg>
-                </div>
+                <div class="img-box" style="background-image: url('https://unsplash.com');"></div>
             </div>
             <div class="details">
                 <div>
@@ -109,13 +102,7 @@
         <!-- Адениум -->
         <div class="card">
             <div class="img-box-wrapper">
-                <div class="img-box">
-                    <svg viewBox="0 0 100 100" fill="none" xmlns="http://w3.org">
-                        <path d="M50 85 C45 70 38 60 45 45" stroke="#ff007f" stroke-width="4"/>
-                        <circle cx="45" cy="35" r="10" fill="#ff007f" opacity="0.9"/>
-                        <circle cx="60" cy="45" r="8" fill="#ff007f" opacity="0.7"/>
-                    </svg>
-                </div>
+                <div class="img-box" style="background-image: url('https://unsplash.com');"></div>
             </div>
             <div class="details">
                 <div>
@@ -130,13 +117,7 @@
         <!-- Фаленопсис -->
         <div class="card">
             <div class="img-box-wrapper">
-                <div class="img-box">
-                    <svg viewBox="0 0 100 100" fill="none" xmlns="http://w3.org">
-                        <path d="M35 85 C40 65 50 45 70 25" stroke="#ff007f" stroke-width="3" stroke-linecap="round"/>
-                        <circle cx="50" cy="48" r="7" fill="#ff007f"/>
-                        <circle cx="65" cy="30" r="7" fill="#ff007f"/>
-                    </svg>
-                </div>
+                <div class="img-box" style="background-image: url('https://unsplash.com');"></div>
             </div>
             <div class="details">
                 <div>
@@ -151,8 +132,26 @@
         <!-- Фиалка -->
         <div class="card">
             <div class="img-box-wrapper">
-                <div class="img-box">
-                    <svg viewBox="0 0 100 100" fill="none" xmlns="http://w3.org">
-                        <path d="M35 70 L65 70 L60 90 L40 90 Z" fill="#160a2c" stroke="#ff007f" stroke-width="2"/>
-                        <circle cx="50" cy="50" r="12" fill="#ff007f"/>
-                        <circle cx="38" cy="45" r="10" fill="#ff007f"/>
+                <div class="img-box" style="background-image: url('https://unsplash.com');"></div>
+            </div>
+            <div class="details">
+                <div>
+                    <h3>Фиалка</h3>
+                    <p>Нежное растение с бархатистыми листьями.</p>
+                    <div class="price">1 500 ₽</div>
+                </div>
+                <button class="buy-btn" onclick="add(1500)">В корзину</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- БОТ MAX -->
+    <div id="ai-widget">
+        <button class="ai-btn" onclick="toggleAi()">🤖</button>
+        <div class="ai-win" id="aiWin">
+            <div class="ai-head"><span>Ассистент MAX</span><span style="cursor:pointer;color:red;" onclick="toggleAi()">✕</span></div>
+            <div class="ai-msgs" id="aiMsgs"><div class="m-line b">Привет! Я встроенный ИИ-помощник Max. Помогу выбрать комнатное растение из коллекции Олеси Казариной. О каком цветке (Адениум, Кротон, Фаленопсис, Фиалка) рассказать?</div></div>
+            <div class="ai-input-zone"><input type="text" class="ai-in" id="aiIn" placeholder="Спросите меня об уходе..." onkeypress="aiKey(event)"><button class="ai-send-btn" onclick="sendAi()">ОК</button></div>
+        </div>
+    </div>
+
