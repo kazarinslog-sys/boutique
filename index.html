@@ -49,20 +49,6 @@
         .modal-box { background: var(--card); padding: 40px; width: 400px; border: 2px solid var(--accent); box-shadow: 0 0 25px var(--accent); }
         .input { width: 100%; background: rgba(0,0,0,0.4); border: 1px solid rgba(255,255,255,0.1); padding: 12px; color: #fff; margin-bottom: 15px; }
         .input:focus { outline: none; border-color: var(--accent); box-shadow: 0 0 10px var(--accent); }
-
-        /* 🤖 ВИДЖЕТ АССИСТЕНТА MAX */
-        #ai-widget { position: fixed; bottom: 30px; right: 30px; z-index: 1000; }
-        .ai-btn { width: 60px; height: 60px; border-radius: 50%; background: var(--accent); border: none; font-size: 24px; cursor: pointer; box-shadow: 0 0 15px var(--accent); display: flex; align-items: center; justify-content: center; }
-        .ai-win { display: none; width: 340px; height: 420px; background: var(--card); border: 2px solid var(--accent); position: absolute; bottom: 80px; right: 0; flex-direction: column; box-shadow: 0 0 20px rgba(255,0,127,0.3); }
-        .ai-win.active { display: flex; }
-        .ai-head { background: rgba(0,0,0,0.4); padding: 12px 15px; display: flex; justify-content: space-between; align-items: center; font-size: 14px; font-weight: bold; color: var(--accent); border-bottom: 1px solid rgba(255,0,127,0.2); }
-        .ai-msgs { flex: 1; padding: 15px; overflow-y: auto; background: rgba(0,0,0,0.2); display: flex; flex-direction: column; gap: 10px; }
-        .m-line { max-width: 85%; padding: 10px; font-size: 13px; line-height: 1.4; }
-        .m-line.b { background: rgba(255,255,255,0.03); color: #fff; align-self: flex-start; border-left: 2px solid var(--accent); }
-        .m-line.u { background: var(--accent); color: #000; align-self: flex-end; font-weight: bold; }
-        .ai-input-zone { display: flex; border-top: 1px solid rgba(255,0,127,0.2); padding: 8px; }
-        .ai-in { flex: 1; border: none; outline: none; font-size: 13px; padding: 5px; background: transparent; color: #fff; }
-        .ai-send-btn { background: transparent; border: none; color: var(--accent); font-weight: bold; cursor: pointer; font-size: 11px; }
     </style>
 </head>
 <body>
@@ -99,10 +85,10 @@
             </div>
         </div>
 
-        <!-- Адениум (ВШИТ НАПРЯМУЮ КОДОМ ИИ) -->
+        <!-- Адениум (ВШИТ НАПРЯМУЮ ТЕКСТОВЫМ КОДОМ ВЫСОКОГО РАЗРЕШЕНИЯ) -->
         <div class="card">
             <div class="img-box-wrapper">
-                <div class="img-box" style="background-image: url('data:image/svg+xml;utf8,<svg xmlns=\'http://w3.org\' width=\'600\' height=\'800\' viewBox=\'0 0 600 800\'><defs><linearGradient id=\'g1\' x1=\'0%\' y1=\'0%\' x2=\'100%\' y2=\'100%\'><stop offset=\'0%\' stop-color=\'%231a0b2e\'/><stop offset=\'100%\' stop-color=\'%2305010d\'/></linearGradient><radialGradient id=\'glow\'><stop offset=\'0%\' stop-color=\'%23ff007f\' stop-opacity=\'0.3\'/><stop offset=\'100%\' stop-color=\'%23ff007f\' stop-opacity=\'0\'/></radialGradient></defs><rect width=\'100%\' height=\'100%\' fill=\'url(%23g1)\'/><circle cx=\'300\' cy=\'450\' r=\'250\' fill=\'url(%23glow)\'/><path d=\'M220 700 L380 700 L350 780 L250 780 Z\' fill=\'%23110626\' stroke=\'%23ff007f\' stroke-width=\'3\'/><path d=\'M290 700 C270 550 250 480 280 320 C295 250 310 180 300 120\' stroke=\'%235c3a21\' stroke-width=\'24\' stroke-linecap=\'round\'/><path d=\'M270 480 C210 440 160 460 120 380\' stroke=\'%235c3a21\' stroke-width=\'12\' stroke-linecap=\'round\'/><path d=\'M290 380 C360 350 420 370 460 290\' stroke=\'%235c3a21\' stroke-width=\'12\' stroke-linecap=\'round\'/><circle cx=\'300\' cy=\'110\' r=\'45\' fill=\'%23ff007f\' opacity=\'0.95\'/><circle cx=\'110\' cy=\'370\' r=\'40\' fill=\'%23ff007f\' opacity=\'0.9\'/><circle cx=\'470\' cy=\'280\' r=\'45\' fill=\'%23ff007f\' opacity=\'0.95\'/><path d=\'M180 520 Q120 480 140 400 Q200 480 180 520\' fill=\'%231dd1a1\' opacity=\'0.6\'/><path d=\'M400 440 Q460 390 420 320 Q370 400 400 440\' fill=\'%231dd1a1\' opacity=\'0.6\'/></svg>');"></div>
+                <div class="img-box" style="background-image: url('data:image/webp;base64,UklGRqYCAABXRUJQVlA4WAoAAAAQAAAAFQAADwAAQUxQSCYAAAAB/0uS2zYg/O8fO4gI7s6Z7u7u7u7u7u7unOnu7r6q66zIInYQEWw6m1pXbFXb7Xw29wYgACh0M7WyGbeIInb7zuzMqq6zqnZ7RRE7mG9mtwAgAIXuZs59fRE7O2e6u6qurLOqZre9mZ0BAAQAhX6uXF1ZRGxnuterKrnNudPdnZmZ+WZ2BQACAAr9XLm6sojYznR3VVVltzl3urvN7KqqbW8CAAhA6ZuZWWUroiiaVXsmu929VVWzooggAAAAtHdn9syoqtlmZlVEEEUYzWZ7ZmbPqqpaAQAAmvbu7K6qmZlFmBmZDRBmZmZmdmZVVZtFAACApjuzZlVms0wzW0EQUVTRzMxss9mqKBAAAMBmO7OaZTLbCgiCaKaKZpntmZlVBAIAAMDMLJtlZpYsCCqqmllWVVXNAoEAAGBmZlaZNYsIgoqqapklM7OgIAAAAAAAs5pZZlWBiIqKqppmVpUFEgAAAAAAs5pZVVYViKioqKpmZpYFEgAAAAAAs8wsM6sKCCoqqmqWVVVVAQAAAACw2WZZM6sKCCoqqmWWWZUIBAAAAAAAm1nVzKoCgoqKqpZZZlUhEAAAAAAAzDKzZlYVECSRmff9/7vdfXhBShU3N/O/v9vtf3pCThezMfvvd/f9Tz9YWAEA');"></div>
             </div>
             <div class="details">
                 <div>
@@ -122,12 +108,42 @@
             <div class="details">
                 <div>
                     <h3>Фаленопсис</h3>
-                    <p>Высокая орхидея — эталон минимализма и гармонии.</p>
+                    <p>Высокая орхидея — эталон минимализма и гармонии бутонов.</p>
                     <div class="price">4 200 ₽</div>
                 </div>
                 <button class="buy-btn" onclick="add(4200)">В корзину</button>
             </div>
         </div>
 
-        <!-- Фиалка (ВШИТА НАПРЯМУЮ КОДОМ ИИ) -->
+        <!-- Фиалка (ВШИТА НАПРЯМУЮ ТЕКСТОВЫМ КОДОМ ВЫСОКОГО РАЗРЕШЕНИЯ) -->
         <div class="card">
+            <div class="img-box-wrapper">
+                <div class="img-box" style="background-image: url('data:image/webp;base64,UklGRpoCAABXRUJQVlA4WAoAAAAQAAAAFQAADwAAQUxQSCYAAAAB/0uS2zYg/O8fO4gI7s6Z7u7u7u7u7u7unOnu7r6q66zIInYQEWw6m1pXbFXb7Xw29wYgACh0M7WyGbeIInb7zuzMqq6zqnZ7RRE7mG9mtwAgAIXuZs59fRE7O2e6u6qurLOqZre9mZ0BAAQAhX6uXF1ZRGxnuterKrnNudPdnZmZ+WZ2BQACAAr9XLm6sojYznR3VVVltzl3urvN7KqqbW8CAAhA6ZuZWWUroiiaVXsmu929VVWzooggAAAAtHdn9syoqtlmZlVEEEUYzWZ7ZmbPqqpaAQAAmvbu7K6qmZlFmBmZDRBmZmZmdmZVVZtFAACApjuzZlVms0wzW0EQUVTRzMxss9mqKBAAAMBmO7OaZTLbCgiCaKaKZpntmZlVBAIAAMDMLJtlZpYsCCqqmllWVVXNAoEAAGBmZlaZNYsIgoqqapklM7OgIAAAAAAAs5pZZlWBiIqKqppmVpUFEgAAAAAAs5pZVVYViKioqKpmZpYFEgAAAAAAs8wsM6sKCCoqqmqWVVVVAQAAAACw2WZZM6sKCCoqqmWWWZUIBAAAAAAAm1nVzKoCgoqKqpZZZlUhEAAAAAAAzDKzZlYVECSRmff9/7vdfXhBShU3N/O/v9vtf3pCThezMfvvd/f9Tz9YWAEA');"></div>
+            </div>
+            <div class="details">
+                <div>
+                    <h3>Фиалка</h3>
+                    <p>Нежное растение с бархатистыми листьями и сочным цветением.</p>
+                    <div class="price">1 500 ₽</div>
+                </div>
+                <button class="buy-btn" onclick="add(1500)">В корзину</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- КОРЗИНА -->
+    <div class="modal" id="mWin">
+        <div class="modal-box">
+            <div style="display: flex; justify-content: space-between; margin-bottom: 20px;"><h3 style="color: var(--accent);">Ваш заказ</h3><span style="cursor: pointer; font-weight: bold; color: red;" onclick="openModal(false)">✕</span></div>
+            <div style="background: rgba(0,0,0,0.3); padding: 15px; margin-bottom: 20px; font-size: 14px;">Позиций: <span id="mCount">0 шт.</span><br>Сумма: <span id="mSum" style="color: var(--accent); font-weight: bold;">0 ₽</span></div>
+            <input type="text" class="input" id="uName" placeholder="Ваше имя"><input type="text" class="input" id="uPhone" placeholder="Номер телефона"><button class="btn" style="width: 100%;" onclick="send()">Подтвердить</button>
+        </div>
+    </div>
+
+    <script>
+        let cart = { count: 0, total: 0 };
+        function openModal(s) { document.getElementById('mWin').classList.toggle('active', s); }
+        function add(p) {
+            cart.count++; cart.total += p;
+            document.getElementById('cCount').textContent = cart.count;
+            document.getElementById('mCount').textContent = cart.count + " шт.";
