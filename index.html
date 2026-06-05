@@ -1,164 +1,230 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-    <meta charset="UTF-8">
-    <title>Олеся Казарина — Комнатные растения с любовью</title>
-    <style>
-        :root { 
-            --bg: #0c0418; 
-            --card: #160a2c; 
-            --accent: #ff007f; 
-            --text: #ffffff; 
-            --text-muted: #a395b8;
-        }
-        * { box-sizing: border-box; margin: 0; padding: 0; font-family: system-ui, sans-serif; }
-        body { background: var(--bg); color: var(--text); padding: 110px 4% 60px; background-image: radial-gradient(circle at 50% 0%, rgba(255,0,127,0.1) 0%, transparent 60%); }
-        
-        header { display: flex; justify-content: space-between; align-items: center; position: fixed; top: 0; left: 0; width: 100%; padding: 20px 6%; background: rgba(12,4,24,0.95); backdrop-filter: blur(10px); z-index: 10; border-bottom: 2px solid var(--accent); box-shadow: 0 0 15px var(--accent); }
-        .logo { font-size: 24px; font-weight: 800; text-shadow: 0 0 10px var(--accent); }
-        .sublogo { font-size: 10px; color: var(--accent); letter-spacing: 2px; text-transform: uppercase; margin-top: 2px; font-weight: bold; }
-        
-        .btn { background: transparent; border: 2px solid var(--accent); color: var(--accent); padding: 10px 20px; cursor: pointer; font-weight: bold; text-transform: uppercase; font-size: 11px; text-shadow: 0 0 5px var(--accent); transition: 0.3s; }
-        .btn:hover { background: var(--accent); color: #000; box-shadow: 0 0 20px var(--accent); text-shadow: none; }
-        
-        .buy-btn { background: transparent; border: 1px solid rgba(255,255,255,0.2); color: #fff; padding: 12px; width: 100%; cursor: pointer; text-transform: uppercase; font-size: 11px; font-weight: bold; margin-top: 15px; transition: 0.3s; }
-        .buy-btn:hover { border-color: var(--accent); color: var(--accent); box-shadow: 0 0 15px var(--accent); }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-        .welcome { max-width: 800px; margin: 30px auto 50px; text-align: center; width: 100%; }
-        .welcome h2 { font-size: 36px; margin-bottom: 15px; text-shadow: 0 0 10px var(--accent); }
-        .welcome p { color: var(--text-muted); font-size: 15px; line-height: 1.6; }
+<title>Boutique — Магазин цветов</title>
 
-        .grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; width: 100%; max-width: 1400px; margin: 0 auto; }
-        @media (max-width: 1024px) { .grid { grid-template-columns: repeat(2, 1fr); } }
-        @media (max-width: 600px) { .grid { grid-template-columns: 1fr; } }
+<meta name="description" content="Boutique — магазин свежих цветов и красивых букетов с доставкой.">
+<meta name="keywords" content="цветы, букеты, магазин цветов, доставка">
+<meta name="author" content="Boutique">
+<meta property="og:title" content="Boutique — Магазин цветов">
+<meta property="og:description" content="Свежие букеты и цветочные композиции">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://kazarinslog-sys.github.io/boutique/">
 
-        .card { background: var(--card); border: 1px solid rgba(255,0,127,0.1); overflow: hidden; transition: 0.3s; display: flex; flex-direction: column; }
-        .card:hover { border-color: var(--accent); box-shadow: 0 0 25px rgba(255,0,127,0.4); transform: translateY(-4px); }
-        
-        .img-box-wrapper { width: 100%; height: 260px; background: #07020f; display: flex; align-items: center; justify-content: center; border-bottom: 1px solid rgba(255,0,127,0.1); position: relative; overflow: hidden; }
-        .img-box { width: 100%; height: 100%; background-size: cover; background-position: center; background-repeat: no-repeat; transition: 0.5s; filter: brightness(0.85); display: flex; align-items: center; justify-content: center; }
-        .card:hover .img-box { transform: scale(1.05); filter: brightness(1.05); }
-        .img-box svg { width: 50%; height: 50%; stroke: var(--accent); fill: none; filter: drop-shadow(0 0 10px var(--accent)); }
+<link rel="icon" type="image/png" href="assets/logo.png">
 
-        .details { padding: 18px; background: #120724; flex-grow: 1; display: flex; flex-direction: column; justify-content: space-between; }
-        .details h3 { font-size: 19px; margin-bottom: 6px; }
-        .details p { color: var(--text-muted); font-size: 12px; line-height: 1.4; height: 38px; margin-bottom: 15px; overflow: hidden; }
-        .price { font-size: 18px; font-weight: bold; color: var(--accent); text-shadow: 0 0 5px var(--accent); margin-bottom: 5px; }
+<style>
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
 
-        .modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); z-index: 20; align-items: center; justify-content: center; }
-        .modal.active { display: flex; }
-        .modal-box { background: var(--card); padding: 40px; width: 400px; border: 2px solid var(--accent); box-shadow: 0 0 25px var(--accent); }
-        .input { width: 100%; background: rgba(0,0,0,0.4); border: 1px solid rgba(255,255,255,0.1); padding: 12px; color: #fff; margin-bottom: 15px; }
-    </style>
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  color: #333;
+  line-height: 1.6;
+}
+
+.container {
+  width: 90%;
+  max-width: 1200px;
+  margin: auto;
+}
+
+/* HEADER */
+header {
+  background: #fff;
+  padding: 15px 0;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+header .container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+nav a {
+  text-decoration: none;
+  margin-left: 20px;
+  color: #333;
+  font-weight: 500;
+}
+
+nav a:hover {
+  color: #d6336c;
+}
+
+/* BANNER */
+.banner {
+  background: url('assets/banner.jpg') center/cover no-repeat;
+  height: 400px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: white;
+}
+
+.banner h1 {
+  font-size: 40px;
+  background: rgba(0,0,0,0.4);
+  padding: 20px;
+  border-radius: 10px;
+}
+
+/* PRODUCTS */
+.products {
+  padding: 60px 0;
+  background: #f8f8f8;
+  text-align: center;
+}
+
+.products h2 {
+  margin-bottom: 40px;
+  font-size: 30px;
+}
+
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 25px;
+}
+
+.product-card {
+  background: white;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+  transition: transform 0.3s ease;
+}
+
+.product-card:hover {
+  transform: translateY(-5px);
+}
+
+.product-card img {
+  width: 100%;
+  height: 250px;
+  object-fit: cover;
+}
+
+.product-card h3 {
+  margin: 15px 0 5px;
+}
+
+.price {
+  font-weight: bold;
+  color: #d6336c;
+}
+
+button {
+  background: #d6336c;
+  border: none;
+  color: white;
+  padding: 10px 20px;
+  margin: 15px 0 20px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+button:hover {
+  background: #b02557;
+}
+
+/* FOOTER */
+footer {
+  background: #333;
+  color: white;
+  text-align: center;
+  padding: 30px 0;
+  margin-top: 40px;
+}
+
+@media (max-width: 768px) {
+  .banner h1 {
+    font-size: 28px;
+  }
+}
+</style>
 </head>
+
 <body>
 
-    <header>
-        <div>
-            <div class="logo">Олеся Казарина</div>
-            <div class="sublogo">комнатные растения с любовью</div>
-        </div>
-        <div>
-            <span style="margin-right: 20px; font-size: 14px;">Корзина: <b id="cCount" style="color:var(--accent);">0</b></span>
-            <button class="btn" onclick="openModal(true)">Заказать</button>
-        </div>
-    </header>
+<header>
+  <div class="container">
+    <h2>Boutique</h2>
+    <nav>
+      <a href="#products">Букеты</a>
+      <a href="#contacts">Контакты</a>
+    </nav>
+  </div>
+</header>
 
-    <div class="welcome">
-        <h2>Эстетика природы в вашем доме</h2>
-        <p>Бережно выращенные комнатные растения премиального качества.</p>
+<section class="banner">
+  <h1>Свежие цветы каждый день</h1>
+</section>
+
+<section class="products" id="products">
+  <div class="container">
+    <h2>Наши букеты</h2>
+
+    <div class="product-grid">
+
+      <div class="product-card">
+        <img src="assets/product1.jpg" alt="Букет роз" loading="lazy">
+        <h3>Букет роз</h3>
+        <p class="price">2 500 ₽</p>
+        <button class="buy-btn">Купить</button>
+      </div>
+
+      <div class="product-card">
+        <img src="assets/product2.jpg" alt="Букет тюльпанов" loading="lazy">
+        <h3>Букет тюльпанов</h3>
+        <p class="price">1 900 ₽</p>
+        <button class="buy-btn">Купить</button>
+      </div>
+
+      <div class="product-card">
+        <img src="assets/product3.jpg" alt="Букет пионов" loading="lazy">
+        <h3>Букет пионов</h3>
+        <p class="price">3 200 ₽</p>
+        <button class="buy-btn">Купить</button>
+      </div>
+
     </div>
+  </div>
+</section>
 
-    <div class="grid">
-        <!-- Кротон Петра -->
-        <div class="card">
-            <div class="img-box-wrapper">
-                <div class="img-box" style="background-image: url('croton.jpg');"></div>
-            </div>
-            <div class="details">
-                <div>
-                    <h3>Кротон Петра</h3>
-                    <p>Яркое лиственное растение с огненной палитрой.</p>
-                    <div class="price">2 900 ₽</div>
-                </div>
-                <button class="buy-btn" onclick="add(2900)">В корзину</button>
-            </div>
-        </div>
+<footer id="contacts">
+  <p>© 2026 Boutique — Магазин цветов</p>
+  <p>Телефон: +7 (900) 000‑00‑00</p>
+</footer>
 
-        <!-- Адениум (ВШИТ НАПРЯМУЮ ГРАФИКОЙ ВЫСШЕГО КАЧЕСТВА) -->
-        <div class="card">
-            <div class="img-box-wrapper">
-                <div class="img-box">
-                    <svg viewBox="0 0 24 24" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z"/><path d="M12 6v12M6 12h12"/></svg>
-                </div>
-            </div>
-            <div class="details">
-                <div>
-                    <h3>Адениум</h3>
-                    <p>Изящный суккулент со скульптурным стволом.</p>
-                    <div class="price">3 400 ₽</div>
-                </div>
-                <button class="buy-btn" onclick="add(3400)">В корзину</button>
-            </div>
-        </div>
+<script>
+document.addEventListener("DOMContentLoaded", function() {
 
-        <!-- Фаленопсис -->
-        <div class="card">
-            <div class="img-box-wrapper">
-                <div class="img-box" style="background-image: url('orchid.jpg');"></div>
-            </div>
-            <div class="details">
-                <div>
-                    <h3>Фаленопсис</h3>
-                    <p>Высокая орхидея — эталон минимализма.</p>
-                    <div class="price">4 200 ₽</div>
-                </div>
-                <button class="buy-btn" onclick="add(4200)">В корзину</button>
-            </div>
-        </div>
+  const buttons = document.querySelectorAll(".buy-btn");
 
-        <!-- Фиалка (ВШИТА НАПРЯМУЮ ГРАФИКОЙ ВЫСШЕГО КАЧЕСТВА) -->
-        <div class="card">
-            <div class="img-box-wrapper">
-                <div class="img-box">
-                    <svg viewBox="0 0 24 24" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M12 2a15.3 15.3 0 0 1 4 7 15.3 15.3 0 0 1 6 3 15.3 15.3 0 0 1-6 3 15.3 15.3 0 0 1-4 7 15.3 15.3 0 0 1-4-7 15.3 15.3 0 0 1-6-3 15.3 15.3 0 0 1 6-3 15.3 15.3 0 0 1 4-7z"/></svg>
-                </div>
-            </div>
-            <div class="details">
-                <div>
-                    <h3>Фиалка</h3>
-                    <p>Нежное растение с бархатистыми листьями.</p>
-                    <div class="price">1 500 ₽</div>
-                </div>
-                <button class="buy-btn" onclick="add(1500)">В корзину</button>
-            </div>
-        </div>
-    </div>
+  buttons.forEach(btn => {
+    btn.addEventListener("click", function() {
+      btn.textContent = "Добавлено ✓";
+      btn.disabled = true;
+      btn.style.background = "#28a745";
+    });
+  });
 
-    <!-- КОРЗИНА -->
-    <div class="modal" id="mWin">
-        <div class="modal-box">
-            <div style="display: flex; justify-content: space-between; margin-bottom: 20px;"><h3 style="color: var(--accent);">Ваш заказ</h3><span style="cursor: pointer; font-weight: bold; color: red;" onclick="openModal(false)">✕</span></div>
-            <div style="background: rgba(0,0,0,0.3); padding: 15px; margin-bottom: 20px; font-size: 14px;">Позиций: <span id="mCount">0 шт.</span><br>Сумма: <span id="mSum" style="color: var(--accent); font-weight: bold;">0 ₽</span></div>
-            <input type="text" class="input" id="uName" placeholder="Ваше имя"><input type="text" class="input" id="uPhone" placeholder="Номер телефона"><button class="btn" style="width: 100%;" onclick="send()">Подтвердить</button>
-        </div>
-    </div>
+});
+</script>
 
-    <script>
-        let cart = { count: 0, total: 0 };
-        function openModal(s) { document.getElementById('mWin').classList.toggle('active', s); }
-        function add(p) {
-            cart.count++; cart.total += p;
-            document.getElementById('cCount').textContent = cart.count;
-            document.getElementById('mCount').textContent = cart.count + " шт.";
-            document.getElementById('mSum').textContent = cart.total.toLocaleString() + " ₽";
-        }
-        function send() {
-            const n = document.getElementById('uName').value; const p = document.getElementById('uPhone').value;
-            if(!n || !p) { alert("Заполните поля!"); return; }
-            alert(`Спасибо, ${n}! Заказ на сумму ${cart.total.toLocaleString()} ₽ принят.`);
-            cart = { count: 0, total: 0 }; document.getElementById('cCount').textContent = "0"; openModal(false);
-        }
-    </script>
 </body>
 </html>
