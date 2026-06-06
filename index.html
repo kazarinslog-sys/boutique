@@ -3,21 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AI Code Assistant</title>
+    <title>AI Code Assistant v1.2</title>
     <style>
         * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', sans-serif; }
         body { background-color: #0b0f19; color: #f3f4f6; padding-bottom: 60px; }
-        header { background: linear-gradient(135deg, #1e1b4b, #311042); padding: 40px 20px; text-align: center; border-bottom: 2px solid #4338ca; }
+        header { background: linear-gradient(135deg, #1e1b4b, #311042); padding: 40px 20px; text-align: center; border-bottom: 2px solid #4338ca; position: relative; }
         header h1 { color: #6366f1; margin-bottom: 10px; }
+        .version-tag { position: absolute; top: 10px; right: 20px; background: #4338ca; padding: 4px 8px; border-radius: 4px; font-size: 0.8rem; font-weight: bold; }
         .container { max-width: 1000px; margin: 40px auto; padding: 0 20px; }
         .card { background: #111827; border: 1px solid #1f2937; border-radius: 12px; padding: 25px; margin-bottom: 30px; }
         .card h2 { color: #38bdf8; margin-bottom: 15px; }
         
-        /* Сетка для картинок */
-        .gallery { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; margin-top: 20px; }
-        .gallery-item { background: #1f2937; border-radius: 8px; overflow: hidden; border: 1px solid #374151; }
-        .gallery-item img { width: 100%; height: 180px; object-fit: cover; display: block; }
-        .gallery-item p { padding: 12px; font-size: 0.9rem; color: #9ca3af; text-align: center; }
+        /* Сетка для картинок (4 штуки) */
+        .gallery { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 20px; margin-top: 20px; }
+        .gallery-item { background: #1f2937; border-radius: 8px; overflow: hidden; border: 1px solid #374151; display: flex; flex-direction: column; }
+        .gallery-item img { width: 100%; height: 160px; object-fit: cover; display: block; background-color: #111827; }
+        .gallery-item p { padding: 12px; font-size: 0.85rem; color: #9ca3af; text-align: center; margin-top: auto; }
 
         /* Блок ИИ */
         .ai-box { display: flex; flex-direction: column; gap: 15px; margin-top: 15px; }
@@ -30,6 +31,7 @@
 <body>
 
     <header>
+        <div class="version-tag">v1.2 (Картинки исправлены)</div>
         <h1>🤖 AI Code Assistant</h1>
         <p>Интеллектуальная генерация и визуализация кода</p>
     </header>
@@ -40,27 +42,31 @@
             <h2>🧠 Интерактивный ИИ-генератор</h2>
             <p style="color: #9ca3af; margin-bottom: 15px;">Введите ваш запрос ниже, и встроенная модель ИИ напишет код:</p>
             <div class="ai-box">
-                <textarea id="ai-input" placeholder="Например: Напиши функцию для сайта или калькулятор..."></textarea>
+                <textarea id="ai-input" placeholder="Например: Напиши функцию для сайта..."></textarea>
                 <button onclick="runAi()">Запустить генерацию</button>
                 <div id="ai-output" class="ai-output"></div>
             </div>
         </div>
 
-        <!-- Блок Галереи -->
+        <!-- Блок Галереи (Все 4 картинки заменены на стабильные ссылки) -->
         <div class="card">
             <h2>🖼️ Галерея нейросетевых интерфейсов</h2>
             <div class="gallery">
                 <div class="gallery-item">
-                    <img src="https://unsplash.com" alt="Код">
+                    <img src="https://api.video" alt="Код">
                     <p>Анализ структуры кода нейросетью</p>
                 </div>
                 <div class="gallery-item">
-                    <img src="https://unsplash.com" alt="ИИ интерфейс">
-                    <p>Интерфейс управления ИИ-агентами</p>
+                    <img src="https://techrepublic.com" alt="Интерфейс ИИ">
+                    <p>Панель управления ИИ-ассистента</p>
                 </div>
                 <div class="gallery-item">
-                    <img src="https://unsplash.com" alt="Кибербезопасность">
-                    <p>Мониторинг уязвимостей в реальном времени</p>
+                    <img src="https://ytimg.com" alt="Разработка приложений">
+                    <p>Проектирование логики интерфейсов</p>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://frontiersin.org" alt="Схема">
+                    <p>Схема архитектуры ИИ-агентов</p>
                 </div>
             </div>
         </div>
