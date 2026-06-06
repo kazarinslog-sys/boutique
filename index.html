@@ -258,7 +258,7 @@
     <section class="catalog">
         <!-- Товар 1 -->
         <div class="card">
-            <img src="https://unsplash.com" alt="Кротон Петра">
+            <img src="https://wikimedia.org" alt="Кротон Петра">
             <h3>Кротон Петра</h3>
             <p class="description">Яркое лиственное растение с огненной палитрой.</p>
             <div class="price">2 900 ₽</div>
@@ -267,7 +267,7 @@
 
         <!-- Товар 2 -->
         <div class="card">
-            <img src="https://unsplash.com" alt="Адениум">
+            <img src="https://wikimedia.org" alt="Адениум">
             <h3>Адениум</h3>
             <p class="description">Изящный суккулент со скульптурным стволом-бонсай.</p>
             <div class="price">3 400 ₽</div>
@@ -276,16 +276,16 @@
 
         <!-- Товар 3 -->
         <div class="card">
-            <img src="https://unsplash.com" alt="Фаленопсис">
+            <img src="https://wikimedia.org" alt="Фаленопсис">
             <h3>Фаленопсис</h3>
             <p class="description">Высокая орхидея — эталон минимализма и гармонии.</p>
             <div class="price">4 200 ₽</div>
             <button class="buy-btn" onclick="addToCart()">В КОРЗИНУ</button>
         </div>
 
-        <!-- Товар 4 (Новый, для ровной сетки!) -->
+        <!-- Товар 4 -->
         <div class="card">
-            <img src="https://unsplash.com" alt="Монстера">
+            <img src="https://wikimedia.org" alt="Монстера">
             <h3>Монстера Делициоза</h3>
             <p class="description">Культовое тропическое растение с крупными резными листьями.</p>
             <div class="price">4 900 ₽</div>
@@ -293,14 +293,13 @@
         </div>
     </section>
 
-    <!-- Всплывающее окно заказа (Интеграция с Netlify Forms) -->
+    <!-- Всплывающее окно заказа (Netlify Forms) -->
     <div id="orderModal" class="modal">
         <div class="modal-content">
             <span class="close-btn" onclick="closeModal()">&times;</span>
             <h2>Оформление заказа</h2>
             <p>Оставьте ваши контакты, и Олеся свяжется с вами для уточнения деталей доставки.</p>
             
-            <!-- Тег data-netlify="true" сообщает серверу Netlify, что нужно обрабатывать форму -->
             <form name="orders" method="POST" data-netlify="true">
                 <input type="text" name="name" placeholder="Ваше имя" required>
                 <input type="tel" name="phone" placeholder="Номер телефона" required>
@@ -316,3 +315,4 @@
         let cartCount = 0;
         function addToCart() {
             cartCount++;
+            document.getElementById('cart-count').innerText = cartCount;
