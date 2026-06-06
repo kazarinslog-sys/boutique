@@ -115,7 +115,7 @@
             height: 250px;
             object-fit: cover;
             border-radius: 4px;
-            background-color: #250c36;
+            background-color: #0d0414;
         }
         .card h3 {
             margin: 15px 0 8px 0;
@@ -244,41 +244,70 @@
     </section>
 
     <section class="catalog">
-        <!-- Кротон -->
+        <!-- Товар 1: Адениум -->
         <div class="card">
-            <img src="data:image/svg+xml;utf8,<svg xmlns='http://w3.org' width='100' height='100' viewBox='0 0 100 100'><rect width='100%' height='100%' fill='%23250c36'/><path d='M50 80 C40 60, 30 50, 20 40 C35 40, 45 50, 50 80 Z' fill='%23ff007f'/><path d='M50 80 C60 60, 70 50, 80 40 C65 40, 55 50, 50 80 Z' fill='%23ff55aa'/><path d='M50 85 L50 40' stroke='%23ff007f' stroke-width='2'/></svg>" alt="Кротон Петра">
-            <h3>Кротон Петра</h3>
-            <p class="description">Яркое лиственное растение с огненной палитрой.</p>
-            <div class="price">2 900 ₽</div>
-            <button class="buy-btn" onclick="addToCart()">В КОРЗИНУ</button>
-        </div>
-
-        <!-- Адениум -->
-        <div class="card">
-            <img src="data:image/svg+xml;utf8,<svg xmlns='http://w3.org' width='100' height='100' viewBox='0 0 100 100'><rect width='100%' height='100%' fill='%23250c36'/><path d='M45 85 Q40 60 50 45 Q60 65 55 85 Z' fill='%23552255'/><circle cx='50' cy='40' r='10' fill='%23ff007f'/><circle cx='40' cy='35' r='7' fill='%23ff55aa'/><circle cx='60' cy='35' r='7' fill='%23ff55aa'/></svg>" alt="Адениум">
+            <img src="https://r2.dev" alt="Адениум">
             <h3>Адениум</h3>
             <p class="description">Изящный суккулент со скульптурным стволом-бонсай.</p>
             <div class="price">3 400 ₽</div>
             <button class="buy-btn" onclick="addToCart()">В КОРЗИНУ</button>
         </div>
 
-        <!-- Фаленопсис -->
+        <!-- Товар 2: Кротон -->
         <div class="card">
-            <img src="data:image/svg+xml;utf8,<svg xmlns='http://w3.org' width='100' height='100' viewBox='0 0 100 100'><rect width='100%' height='100%' fill='%23250c36'/><path d='M50 90 L50 30' stroke='%23ff007f' stroke-width='2'/><circle cx='50' cy='30' r='12' fill='%23ff007f' opacity='0.8'/><circle cx='40' cy='25' r='10' fill='%23ffffff' opacity='0.9'/><circle cx='60' cy='25' r='10' fill='%23ffffff' opacity='0.9'/></svg>" alt="Фаленопсис">
+            <img src="https://r2.dev" alt="Кротон Петра">
+            <h3>Кротон Петра</h3>
+            <p class="description">Яркое лиственное растение с огненной палитрой листьев.</p>
+            <div class="price">2 900 ₽</div>
+            <button class="buy-btn" onclick="addToCart()">В КОРЗИНУ</button>
+        </div>
+
+        <!-- Товар 3: Фиалка -->
+        <div class="card">
+            <img src="https://r2.dev" alt="Фиалка">
+            <h3>Узумбарская фиалка</h3>
+            <p class="description">Нежное, пышно цветущее растение для домашнего уюта.</p>
+            <div class="price">1 500 ₽</div>
+            <button class="buy-btn" onclick="addToCart()">В КОРЗИНУ</button>
+        </div>
+
+        <!-- Товар 4: Фаленопсис -->
+        <div class="card">
+            <img src="https://r2.dev" alt="Фаленопсис">
             <h3>Фаленопсис</h3>
             <p class="description">Высокая орхидея — эталон минимализма и гармонии.</p>
             <div class="price">4 200 ₽</div>
             <button class="buy-btn" onclick="addToCart()">В КОРЗИНУ</button>
         </div>
-
-        <!-- Монстера -->
-        <div class="card">
-            <img src="data:image/svg+xml;utf8,<svg xmlns='http://w3.org' width='100' height='100' viewBox='0 0 100 100'><rect width='100%' height='100%' fill='%23250c36'/><path d='M50 80 C30 70, 20 50, 30 30 C45 25, 50 45, 50 80 Z' fill='%23ff007f'/><path d='M50 80 C70 70, 80 50, 70 30 C55 25, 50 45, 50 80 Z' fill='%23ff007f'/><circle cx='38' cy='45' r='3' fill='%23250c36'/><circle cx='62' cy='45' r='3' fill='%23250c36'/></svg>" alt="Монстера">
-            <h3>Монстера Делициоза</h3>
-            <p class="description">Культовое тропическое растение с крупными резными листьями.</p>
-            <div class="price">4 900 ₽</div>
-            <button class="buy-btn" onclick="addToCart()">В КОРЗИНУ</button>
-        </div>
     </section>
 
     <div id="orderModal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeModal()">&times;</span>
+            <h2>Оформление заказа</h2>
+            <p>Оставьте ваши контакты, и Олеся свяжется с вами для уточнения деталей доставки.</p>
+            <form name="orders" method="POST" data-netlify="true">
+                <input type="text" name="name" placeholder="Ваше имя" required>
+                <input type="tel" name="phone" placeholder="Номер телефона" required>
+                <textarea name="message" rows="4" placeholder="Напишите, какие растения вас интересуют..."></textarea>
+                <button type="submit" class="submit-btn">ОТПРАВИТЬ ЗАКАЗ</button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        let cartCount = 0;
+        function addToCart() {
+            cartCount++;
+            document.getElementById('cart-count').innerText = cartCount;
+        }
+        function openModal() {
+            document.getElementById('orderModal').style.display = 'block';
+        }
+        function closeModal() {
+            document.getElementById('orderModal').style.display = 'none';
+        }
+        window.onclick = function(event) {
+            let modal = document.getElementById('orderModal');
+            if (event.target == modal) {
+                modal.style.display = 'none';
