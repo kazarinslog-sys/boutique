@@ -110,15 +110,31 @@
         .card:hover {
             transform: translateY(-5px);
         }
-        .card img {
+        .image-placeholder {
             width: 100%;
             height: 250px;
-            object-fit: cover;
             border-radius: 4px;
-            background-color: #0d0414;
+            background: linear-gradient(135deg, #250c36 0%, #0d0414 100%);
+            border: 1px dashed #ff007f;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            font-size: 40px;
+            color: #ff007f;
+            text-shadow: 0 0 10px #ff007f;
+            margin-bottom: 15px;
+        }
+        .image-placeholder span {
+            font-size: 12px;
+            color: #aaaaaa;
+            margin-top: 10px;
+            text-shadow: none;
+            text-transform: uppercase;
+            letter-spacing: 1px;
         }
         .card h3 {
-            margin: 15px 0 8px 0;
+            margin: 5px 0 8px 0;
             font-size: 18px;
             font-weight: 600;
         }
@@ -246,7 +262,7 @@
     <section class="catalog">
         <!-- Товар 1: Адениум -->
         <div class="card">
-            <img src="https://r2.dev" alt="Адениум">
+            <div class="image-placeholder">🌸<span>Адениум</span></div>
             <h3>Адениум</h3>
             <p class="description">Изящный суккулент со скульптурным стволом-бонсай.</p>
             <div class="price">3 400 ₽</div>
@@ -255,7 +271,7 @@
 
         <!-- Товар 2: Кротон -->
         <div class="card">
-            <img src="https://r2.dev" alt="Кротон Петра">
+            <div class="image-placeholder">🌿<span>Кротон</span></div>
             <h3>Кротон Петра</h3>
             <p class="description">Яркое лиственное растение с огненной палитрой листьев.</p>
             <div class="price">2 900 ₽</div>
@@ -264,7 +280,7 @@
 
         <!-- Товар 3: Фиалка -->
         <div class="card">
-            <img src="https://r2.dev" alt="Фиалка">
+            <div class="image-placeholder">💜<span>Фиалка</span></div>
             <h3>Узумбарская фиалка</h3>
             <p class="description">Нежное, пышно цветущее растение для домашнего уюта.</p>
             <div class="price">1 500 ₽</div>
@@ -273,7 +289,7 @@
 
         <!-- Товар 4: Фаленопсис -->
         <div class="card">
-            <img src="https://r2.dev" alt="Фаленопсис">
+            <div class="image-placeholder">💮<span>Фаленопсис</span></div>
             <h3>Фаленопсис</h3>
             <p class="description">Высокая орхидея — эталон минимализма и гармонии.</p>
             <div class="price">4 200 ₽</div>
@@ -301,13 +317,3 @@
             cartCount++;
             document.getElementById('cart-count').innerText = cartCount;
         }
-        function openModal() {
-            document.getElementById('orderModal').style.display = 'block';
-        }
-        function closeModal() {
-            document.getElementById('orderModal').style.display = 'none';
-        }
-        window.onclick = function(event) {
-            let modal = document.getElementById('orderModal');
-            if (event.target == modal) {
-                modal.style.display = 'none';
