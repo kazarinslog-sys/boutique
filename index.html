@@ -1,40 +1,320 @@
-<script>
-document.addEventListener("DOMContentLoaded", function() {
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Олеся Казарина — Комнатные растения с любовью</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #0d0414;
+            color: #ffffff;
+        }
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 40px;
+            background-color: #13061c;
+            border-bottom: 1px solid #250c36;
+        }
+        .logo h1 {
+            margin: 0;
+            font-size: 24px;
+            color: #ffffff;
+            letter-spacing: 1px;
+        }
+        .logo p {
+            margin: 5px 0 0 0;
+            font-size: 11px;
+            color: #ff007f;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-weight: bold;
+        }
+        .header-right {
+            display: flex;
+            align-items: center;
+            gap: 25px;
+        }
+        .cart-status {
+            font-size: 14px;
+            color: #cccccc;
+        }
+        .cart-status span {
+            color: #ff007f;
+            font-weight: bold;
+        }
+        .order-btn {
+            background: transparent;
+            color: #ff007f;
+            border: 2px solid #ff007f;
+            padding: 10px 20px;
+            font-size: 12px;
+            font-weight: bold;
+            letter-spacing: 1px;
+            cursor: pointer;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+        }
+        .order-btn:hover {
+            background: #ff007f;
+            color: #ffffff;
+            box-shadow: 0 0 15px #ff007f;
+        }
+        .hero {
+            text-align: center;
+            padding: 60px 20px;
+            position: relative;
+        }
+        .hero h2 {
+            font-size: 36px;
+            margin: 0 0 15px 0;
+            letter-spacing: 1px;
+            font-weight: 600;
+        }
+        .hero::after {
+            content: '';
+            display: block;
+            width: 60%;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, #ff007f, transparent);
+            margin: 20px auto 25px auto;
+            box-shadow: 0 0 10px #ff007f;
+        }
+        .hero p {
+            color: #aaaaaa;
+            font-size: 16px;
+            margin: 0;
+        }
+        .catalog {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            padding: 20px 40px 60px 40px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .card {
+            background-color: #13061c;
+            border-radius: 6px;
+            overflow: hidden;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            transition: transform 0.3s ease;
+        }
+        .card:hover {
+            transform: translateY(-5px);
+        }
+        .card img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            border-radius: 4px;
+            background-color: #0d0414;
+            border: 1px solid #250c36;
+        }
+        .card h3 {
+            margin: 15px 0 8px 0;
+            font-size: 18px;
+            font-weight: 600;
+        }
+        .card .description {
+            font-size: 12px;
+            color: #888888;
+            margin: 0 0 15px 0;
+            line-height: 1.4;
+            min-height: 34px;
+        }
+        .card .price {
+            font-size: 18px;
+            color: #ff007f;
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+        .buy-btn {
+            background: transparent;
+            color: #ffffff;
+            border: 1px solid #250c36;
+            padding: 12px;
+            font-size: 11px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            cursor: pointer;
+            width: 100%;
+            border-radius: 4px;
+            transition: background 0.3s, border-color 0.3s;
+        }
+        .buy-btn:hover {
+            background: #250c36;
+            border-color: #ff007f;
+        }
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(13, 4, 20, 0.85);
+            backdrop-filter: blur(5px);
+        }
+        .modal-content {
+            background-color: #13061c;
+            margin: 10% auto;
+            padding: 30px;
+            border: 2px solid #ff007f;
+            box-shadow: 0 0 25px #ff007f;
+            width: 90%;
+            max-width: 400px;
+            border-radius: 8px;
+            color: #ffffff;
+            position: relative;
+        }
+        .close-btn {
+            position: absolute;
+            right: 20px;
+            top: 15px;
+            color: #ff007f;
+            font-size: 32px;
+            cursor: pointer;
+        }
+        .modal h2 {
+            margin: 0 0 10px 0;
+            font-size: 22px;
+        }
+        .modal p {
+            color: #888888;
+            font-size: 13px;
+            margin: 0 0 20px 0;
+        }
+        .modal input, .modal textarea {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 15px;
+            background: #0d0414;
+            border: 1px solid #250c36;
+            border-radius: 4px;
+            color: #ffffff;
+            box-sizing: border-box;
+        }
+        .modal input:focus, .modal textarea:focus {
+            outline: none;
+            border-color: #ff007f;
+            box-shadow: 0 0 5px #ff007f;
+        }
+        .submit-btn {
+            background: #ff007f;
+            color: #ffffff;
+            border: none;
+            padding: 14px;
+            width: 100%;
+            font-weight: bold;
+            font-size: 14px;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        .submit-btn:hover {
+            background: #e60073;
+            box-shadow: 0 0 10px #ff007f;
+        }
+    </style>
+</head>
+<body>
 
-  let cart = JSON.parse(localStorage.getItem("cart")) || [];
-  const counter = document.querySelector(".cart-count");
+    <header>
+        <div class="logo">
+            <h1>Олеся Казарина</h1>
+            <p>комнатные растения с любовью</p>
+        </div>
+        <div class="header-right">
+            <div class="cart-status">Корзина: <span id="cart-count">0</span></div>
+            <button class="order-btn" onclick="openModal()">ЗАКАЗАТЬ</button>
+        </div>
+    </header>
 
-  function updateCart() {
-    if (counter) counter.textContent = cart.length;
-    localStorage.setItem("cart", JSON.stringify(cart));
-  }
+    <section class="hero">
+        <h2>Эстетика природы в вашем доме</h2>
+        <p>Бережно выращенные комнатные растения премиального качества.</p>
+    </section>
 
-  function attachCartLogic() {
-    const buttons = document.querySelectorAll("button");
+    <section class="catalog">
+        <!-- Товар 1: Адениум -->
+        <div class="card">
+            <img src="adenium.jpg" alt="Адениум">
+            <h3>Адениум</h3>
+            <p class="description">Изящный суккулент со скульптурным стволом-бонсай.</p>
+            <div class="price">3 400 ₽</div>
+            <button class="buy-btn" onclick="addToCart()">В КОРЗИНУ</button>
+        </div>
 
-    buttons.forEach(btn => {
-      if (btn.dataset.cartAttached) return;
+        <!-- Товар 2: Кратон -->
+        <div class="card">
+            <img src="croton.jpg" alt="Кратон">
+            <h3>Кратон</h3>
+            <p class="description">Яркое лиственное растение с огненной палитрой листьев.</p>
+            <div class="price">2 900 ₽</div>
+            <button class="buy-btn" onclick="addToCart()">В КОРЗИНУ</button>
+        </div>
 
-      if (btn.textContent.toLowerCase().includes("корз")) {
-        btn.dataset.cartAttached = "true";
+        <!-- Товар 3: Фиалка -->
+        <div class="card">
+            <img src="fialka.jpg" alt="Фиалка">
+            <h3>Узамбарская фиалка</h3>
+            <p class="description">Нежное, пышно цветущее растение для домашнего уюта.</p>
+            <div class="price">1 500 ₽</div>
+            <button class="buy-btn" onclick="addToCart()">В КОРЗИНУ</button>
+        </div>
 
-        btn.addEventListener("click", function() {
-          const card = btn.closest("div");
-          const name = card?.querySelector("h3")?.textContent || "Товар";
-          const price = card?.querySelector(".price")?.textContent || "";
+        <!-- Товар 4: Фаленопсис -->
+        <div class="card">
+            <img src="phalaenopsis.jpg" alt="Фаленопсис">
+            <h3>Фаленопсис</h3>
+            <p class="description">Высокая орхидея — эталон минимализма и гармонии.</p>
+            <div class="price">4 200 ₽</div>
+            <button class="buy-btn" onclick="addToCart()">В КОРЗИНУ</button>
+        </div>
+    </section>
 
-          cart.push({ name, price });
-          updateCart();
+    <!-- Форма заказа Netlify -->
+    <div id="orderModal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeModal()">&times;</span>
+            <h2>Оформление заказа</h2>
+            <p>Оставьте ваши контакты, и Олеся свяжется с вами для уточнения деталей доставки.</p>
+            <form name="orders" method="POST" data-netlify="true">
+                <input type="text" name="name" placeholder="Ваше имя" required>
+                <input type="tel" name="phone" placeholder="Номер телефона" required>
+                <textarea name="message" rows="4" placeholder="Напишите, какие растения вас интересуют..."></textarea>
+                <button type="submit" class="submit-btn">ОТПРАВИТЬ ЗАКАЗ</button>
+            </form>
+        </div>
+    </div>
 
-          btn.textContent = "Добавлено ✓";
-          btn.disabled = true;
-        });
-      }
-    });
-  }
-
-  attachCartLogic();
-  updateCart();
-});
-</script>
-Cart enabled
+    <script>
+        let cartCount = 0;
+        function addToCart() {
+            cartCount++;
+            document.getElementById('cart-count').innerText = cartCount;
+        }
+        function openModal() {
+            document.getElementById('orderModal').style.display = 'block';
+        }
+        function closeModal() {
+            document.getElementById('orderModal').style.display = 'none';
+        }
+        window.onclick = function(event) {
+            let modal = document.getElementById('orderModal');
+            if (event.target == modal) {
+                modal.style.display = 'none';
+            }
+        }
+    </script>
+</body>
+</html>
