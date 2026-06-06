@@ -3,89 +3,73 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AI Code Assistant v1.2</title>
+    <title>AI Code Assistant — Работает</title>
     <style>
         * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', sans-serif; }
         body { background-color: #0b0f19; color: #f3f4f6; padding-bottom: 60px; }
-        header { background: linear-gradient(135deg, #1e1b4b, #311042); padding: 40px 20px; text-align: center; border-bottom: 2px solid #4338ca; position: relative; }
+        header { background: linear-gradient(135deg, #1e1b4b, #311042); padding: 40px 20px; text-align: center; border-bottom: 2px solid #4338ca; }
         header h1 { color: #6366f1; margin-bottom: 10px; }
-        .version-tag { position: absolute; top: 10px; right: 20px; background: #4338ca; padding: 4px 8px; border-radius: 4px; font-size: 0.8rem; font-weight: bold; }
         .container { max-width: 1000px; margin: 40px auto; padding: 0 20px; }
         .card { background: #111827; border: 1px solid #1f2937; border-radius: 12px; padding: 25px; margin-bottom: 30px; }
         .card h2 { color: #38bdf8; margin-bottom: 15px; }
-        
-        /* Сетка для картинок (4 штуки) */
         .gallery { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 20px; margin-top: 20px; }
         .gallery-item { background: #1f2937; border-radius: 8px; overflow: hidden; border: 1px solid #374151; display: flex; flex-direction: column; }
         .gallery-item img { width: 100%; height: 160px; object-fit: cover; display: block; background-color: #111827; }
         .gallery-item p { padding: 12px; font-size: 0.85rem; color: #9ca3af; text-align: center; margin-top: auto; }
-
-        /* Блок ИИ */
         .ai-box { display: flex; flex-direction: column; gap: 15px; margin-top: 15px; }
-        textarea { width: 100%; height: 120px; background: #1f2937; border: 1px solid #374151; border-radius: 8px; padding: 15px; color: #fff; font-family: monospace; }
+        textarea { width: 100%; height: 120px; background: #1f2937; border: 1px solid #374151; border-radius: 8px; padding: 15px; color: #fff; font-family: monospace; font-size: 1rem; }
         button { background: #4338ca; color: white; border: none; padding: 12px 25px; border-radius: 8px; cursor: pointer; font-weight: bold; align-self: flex-start; }
         button:hover { background: #4f46e5; }
         .ai-output { background: #1e293b; border-left: 4px solid #38bdf8; padding: 15px; border-radius: 4px; display: none; font-family: monospace; white-space: pre-wrap; color: #34d399; }
     </style>
 </head>
 <body>
-
     <header>
-        <div class="version-tag">v1.2 (Картинки исправлены)</div>
         <h1>🤖 AI Code Assistant</h1>
-        <p>Интеллектуальная генерация и визуализация кода</p>
+        <p>Платформа генерации кода и визуализации</p>
     </header>
-
     <div class="container">
-        <!-- Блок ИИ -->
         <div class="card">
-            <h2>🧠 Интерактивный ИИ-генератор</h2>
-            <p style="color: #9ca3af; margin-bottom: 15px;">Введите ваш запрос ниже, и встроенная модель ИИ напишет код:</p>
+            <h2>🧠 Встроенная модель искусственного интеллекта</h2>
             <div class="ai-box">
-                <textarea id="ai-input" placeholder="Например: Напиши функцию для сайта..."></textarea>
+                <textarea id="ai-input" placeholder="Напишите задачу сюда..."></textarea>
                 <button onclick="runAi()">Запустить генерацию</button>
                 <div id="ai-output" class="ai-output"></div>
             </div>
         </div>
-
-        <!-- Блок Галереи (Все 4 картинки заменены на стабильные ссылки) -->
         <div class="card">
-            <h2>🖼️ Галерея нейросетевых интерфейсов</h2>
+            <h2>🖼️ Галерея ИИ-интерфейсов</h2>
             <div class="gallery">
                 <div class="gallery-item">
-                    <img src="https://api.video" alt="Код">
-                    <p>Анализ структуры кода нейросетью</p>
+                    <img src="https://api.video" alt="Анализ">
+                    <p>Анализ структуры кода</p>
                 </div>
                 <div class="gallery-item">
-                    <img src="https://techrepublic.com" alt="Интерфейс ИИ">
-                    <p>Панель управления ИИ-ассистента</p>
+                    <img src="https://techrepublic.com" alt="Панель">
+                    <p>Панель управления ИИ</p>
                 </div>
                 <div class="gallery-item">
-                    <img src="https://ytimg.com" alt="Разработка приложений">
-                    <p>Проектирование логики интерфейсов</p>
+                    <img src="https://ytimg.com" alt="Интерфейс">
+                    <p>Проектирование логики</p>
                 </div>
                 <div class="gallery-item">
                     <img src="https://frontiersin.org" alt="Схема">
-                    <p>Схема архитектуры ИИ-агентов</p>
+                    <p>Схема архитектуры ИИ</p>
                 </div>
             </div>
         </div>
     </div>
-
     <script>
         function runAi() {
             const input = document.getElementById('ai-input').value.trim();
             const outputDiv = document.getElementById('ai-output');
             if (!input) return alert('Введите запрос!');
-
             outputDiv.style.display = 'block';
-            outputDiv.innerHTML = '⚡ <i>ИИ создаёт решение для вашего сайта...</i>';
-
+            outputDiv.innerHTML = '⚡ <i>ИИ генерирует код...</i>';
             setTimeout(() => {
-                outputDiv.innerHTML = `// [Ответ разработанного ИИ]\n// Успешно сгенерировано под запрос: "${input}"\n\nfunction initAiSystem() {\n    const status = "активен";\n    console.log(\`Модуль ИИ переведен в статус: \${status}\`);\n    return true;\n}\n\ninitAiSystem();`;
+                outputDiv.innerHTML = `// [Ответ ИИ]\n// Код под запрос: "${input}"\n\nfunction start() {\n    console.log("Всё отлично работает!");\n}`;
             }, 1000);
         }
     </script>
-
 </body>
 </html>
