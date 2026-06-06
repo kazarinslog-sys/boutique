@@ -153,77 +153,118 @@
             background: #250c36;
             border-color: #ff007f;
         }
+
+        /* Форма заказа (модалка) */
         .modal {
             display: none;
             position: fixed;
             z-index: 1000;
-            left: 0;
-            top: 0;
-            width: 100%;
-            height: 100%;
+            left: 0; top: 0; width: 100%; height: 100%;
             background-color: rgba(13, 4, 20, 0.85);
             backdrop-filter: blur(5px);
         }
         .modal-content {
             background-color: #13061c;
-            margin: 10% auto;
-            padding: 30px;
+            margin: 10% auto; padding: 30px;
             border: 2px solid #ff007f;
             box-shadow: 0 0 25px #ff007f;
-            width: 90%;
-            max-width: 400px;
-            border-radius: 8px;
-            color: #ffffff;
+            width: 90%; max-width: 400px;
+            border-radius: 8px; color: #ffffff;
             position: relative;
         }
         .close-btn {
-            position: absolute;
-            right: 20px;
-            top: 15px;
-            color: #ff007f;
-            font-size: 32px;
-            cursor: pointer;
+            position: absolute; right: 20px; top: 15px;
+            color: #ff007f; font-size: 32px; cursor: pointer;
         }
-        .modal h2 {
-            margin: 0 0 10px 0;
-            font-size: 22px;
-        }
-        .modal p {
-            color: #888888;
-            font-size: 13px;
-            margin: 0 0 20px 0;
-        }
+        .modal h2 { margin: 0 0 10px 0; font-size: 22px; }
+        .modal p { color: #888888; font-size: 13px; margin: 0 0 20px 0; }
         .modal input, .modal textarea {
-            width: 100%;
-            padding: 12px;
-            margin-bottom: 15px;
-            background: #0d0414;
-            border: 1px solid #250c36;
-            border-radius: 4px;
-            color: #ffffff;
-            box-sizing: border-box;
+            width: 100%; padding: 12px; margin-bottom: 15px;
+            background: #0d0414; border: 1px solid #250c36;
+            border-radius: 4px; color: #ffffff; box-sizing: border-box;
         }
         .modal input:focus, .modal textarea:focus {
-            outline: none;
-            border-color: #ff007f;
-            box-shadow: 0 0 5px #ff007f;
+            outline: none; border-color: #ff007f; box-shadow: 0 0 5px #ff007f;
         }
-        .submit-btn {
-            background: #ff007f;
-            color: #ffffff;
-            border: none;
-            padding: 14px;
-            width: 100%;
-            font-weight: bold;
-            font-size: 14px;
-            border-radius: 4px;
+
+        /* --- НОВЫЙ БЛОК: СТИЛИ ДЛЯ ИИ-ЧАТА --- */
+        .ai-chat-trigger {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 60px;
+            height: 60px;
+            background-color: #ff007f;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 28px;
             cursor: pointer;
-            transition: background 0.3s;
+            box-shadow: 0 0 15px #ff007f;
+            z-index: 999;
+            transition: transform 0.3s ease, background-color 0.3s;
         }
-        .submit-btn:hover {
-            background: #e60073;
-            box-shadow: 0 0 10px #ff007f;
+        .ai-chat-trigger:hover {
+            transform: scale(1.1);
+            background-color: #e60073;
         }
+        .ai-chat-window {
+            display: none;
+            position: fixed;
+            bottom: 105px;
+            right: 30px;
+            width: 350px;
+            height: 450px;
+            background-color: #13061c;
+            border: 2px solid #ff007f;
+            box-shadow: 0 0 25px rgba(250, 0, 127, 0.4);
+            border-radius: 12px;
+            z-index: 999;
+            flex-direction: column;
+            overflow: hidden;
+            font-size: 14px;
+        }
+        .ai-chat-header {
+            background-color: #1a0926;
+            padding: 15px;
+            border-bottom: 1px solid #250c36;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .ai-chat-header h4 { margin: 0; font-size: 15px; color: #fff; display: flex; align-items: center; gap: 8px; }
+        .ai-chat-header h4::before { content: '●'; color: #00ffcc; text-shadow: 0 0 5px #00ffcc; }
+        .ai-chat-close { color: #ff007f; font-size: 20px; cursor: pointer; font-weight: bold; }
+        .ai-chat-messages {
+            flex: 1;
+            padding: 15px;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            background-color: #0d0414;
+        }
+        .msg { max-width: 80%; padding: 10px 14px; border-radius: 8px; line-height: 1.4; word-wrap: break-word; }
+        .msg.bot { background-color: #250c36; color: #ffffff; align-self: flex-start; border-bottom-left-radius: 2px; border: 1px solid #3d1459; }
+        .msg.user { background-color: #ff007f; color: #ffffff; align-self: flex-end; border-bottom-right-radius: 2px; }
+        .ai-chat-input-area {
+            padding: 12px;
+            background-color: #13061c;
+            border-top: 1px solid #250c36;
+            display: flex;
+            gap: 10px;
+        }
+        .ai-chat-input-area input {
+            flex: 1; background: #0d0414; border: 1px solid #250c36;
+            padding: 10px; border-radius: 4px; color: #fff;
+        }
+        .ai-chat-input-area input:focus { outline: none; border-color: #ff007f; }
+        .ai-send-btn {
+            background: #ff007f; border: none; color: #white; padding: 0 15px;
+            border-radius: 4px; color: #fff; font-weight: bold; cursor: pointer; transition: 0.2s;
+        }
+        .ai-send-btn:hover { background: #e60073; }
     </style>
 </head>
 <body>
@@ -260,61 +301,3 @@
             <h3>Кратон</h3>
             <p class="description">Яркое лиственное растение с огненной палитрой листьев.</p>
             <div class="price">2 900 ₽</div>
-            <button class="buy-btn" onclick="addToCart()">В КОРЗИНУ</button>
-        </div>
-
-        <!-- Товар 3: Фиалка -->
-        <div class="card">
-            <img src="fialka.jpg" alt="Фиалка">
-            <h3>Узамбарская фиалка</h3>
-            <p class="description">Нежное, пышно цветущее растение для домашнего уюта.</p>
-            <div class="price">1 500 ₽</div>
-            <button class="buy-btn" onclick="addToCart()">В КОРЗИНУ</button>
-        </div>
-
-        <!-- Товар 4: Фаленопсис -->
-        <div class="card">
-            <img src="phalaenopsis.jpg" alt="Фаленопсис">
-            <h3>Фаленопсис</h3>
-            <p class="description">Высокая орхидея — эталон минимализма и гармонии.</p>
-            <div class="price">4 200 ₽</div>
-            <button class="buy-btn" onclick="addToCart()">В КОРЗИНУ</button>
-        </div>
-    </section>
-
-    <!-- Форма заказа Netlify -->
-    <div id="orderModal" class="modal">
-        <div class="modal-content">
-            <span class="close-btn" onclick="closeModal()">&times;</span>
-            <h2>Оформление заказа</h2>
-            <p>Оставьте ваши контакты, и Олеся свяжется с вами для уточнения деталей доставки.</p>
-            <form name="orders" method="POST" data-netlify="true">
-                <input type="text" name="name" placeholder="Ваше имя" required>
-                <input type="tel" name="phone" placeholder="Номер телефона" required>
-                <textarea name="message" rows="4" placeholder="Напишите, какие растения вас интересуют..."></textarea>
-                <button type="submit" class="submit-btn">ОТПРАВИТЬ ЗАКАЗ</button>
-            </form>
-        </div>
-    </div>
-
-    <script>
-        let cartCount = 0;
-        function addToCart() {
-            cartCount++;
-            document.getElementById('cart-count').innerText = cartCount;
-        }
-        function openModal() {
-            document.getElementById('orderModal').style.display = 'block';
-        }
-        function closeModal() {
-            document.getElementById('orderModal').style.display = 'none';
-        }
-        window.onclick = function(event) {
-            let modal = document.getElementById('orderModal');
-            if (event.target == modal) {
-                modal.style.display = 'none';
-            }
-        }
-    </script>
-</body>
-</html>
