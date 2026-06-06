@@ -3,301 +3,173 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Олеся Казарина — Комнатные растения с любовью</title>
+    <title>AI Code Assistant — Интеллектуальная разработка</title>
     <style>
-        body {
+        * {
+            box-sizing: border-box;
             margin: 0;
             padding: 0;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: #0d0414;
-            color: #ffffff;
         }
+
+        body {
+            background-color: #0b0f19;
+            color: #f3f4f6;
+            line-height: 1.6;
+        }
+
         header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 20px 40px;
-            background-color: #13061c;
-            border-bottom: 1px solid #250c36;
-        }
-        .logo h1 {
-            margin: 0;
-            font-size: 24px;
-            color: #ffffff;
-            letter-spacing: 1px;
-        }
-        .logo p {
-            margin: 5px 0 0 0;
-            font-size: 11px;
-            color: #ff007f;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            font-weight: bold;
-        }
-        .header-right {
-            display: flex;
-            align-items: center;
-            gap: 25px;
-        }
-        .cart-status {
-            font-size: 14px;
-            color: #cccccc;
-        }
-        .cart-status span {
-            color: #ff007f;
-            font-weight: bold;
-        }
-        .order-btn {
-            background: transparent;
-            color: #ff007f;
-            border: 2px solid #ff007f;
-            padding: 10px 20px;
-            font-size: 12px;
-            font-weight: bold;
-            letter-spacing: 1px;
-            cursor: pointer;
-            border-radius: 4px;
-            transition: all 0.3s ease;
-        }
-        .order-btn:hover {
-            background: #ff007f;
-            color: #ffffff;
-            box-shadow: 0 0 15px #ff007f;
-        }
-        .hero {
+            background: linear-gradient(135deg, #1e1b4b 0%, #311042 100%);
+            padding: 40px 20px;
             text-align: center;
-            padding: 60px 20px;
-            position: relative;
+            border-bottom: 2px solid #4338ca;
         }
-        .hero h2 {
-            font-size: 36px;
-            margin: 0 0 15px 0;
-            letter-spacing: 1px;
-            font-weight: 600;
+
+        header h1 {
+            font-size: 2.5rem;
+            color: #6366f1;
+            margin-bottom: 10px;
         }
-        .hero::after {
-            content: '';
-            display: block;
-            width: 60%;
-            height: 2px;
-            background: linear-gradient(90deg, transparent, #ff007f, transparent);
-            margin: 20px auto 25px auto;
-            box-shadow: 0 0 10px #ff007f;
+
+        header p {
+            color: #9ca3af;
+            font-size: 1.1rem;
         }
-        .hero p {
-            color: #aaaaaa;
-            font-size: 16px;
-            margin: 0;
+
+        .container {
+            max-width: 1000px;
+            margin: 40px auto;
+            padding: 0 20px;
         }
-        .catalog {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 30px;
-            padding: 20px 40px 60px 40px;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
+
         .card {
-            background-color: #13061c;
-            border-radius: 6px;
-            overflow: hidden;
-            padding: 20px;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            transition: transform 0.3s ease;
-        }
-        .card:hover {
-            transform: translateY(-5px);
-        }
-        .card img {
-            width: 100%;
-            height: 250px;
-            object-fit: cover;
-            border-radius: 4px;
-            background-color: #0d0414;
-            border: 1px solid #250c36;
-        }
-        .card h3 {
-            margin: 15px 0 8px 0;
-            font-size: 18px;
-            font-weight: 600;
-        }
-        .card .description {
-            font-size: 12px;
-            color: #888888;
-            margin: 0 0 15px 0;
-            line-height: 1.4;
-            min-height: 34px;
-        }
-        .card .price {
-            font-size: 18px;
-            color: #ff007f;
-            font-weight: bold;
-            margin-bottom: 15px;
-        }
-        .buy-btn {
-            background: transparent;
-            color: #ffffff;
-            border: 1px solid #250c36;
-            padding: 12px;
-            font-size: 11px;
-            letter-spacing: 1px;
-            text-transform: uppercase;
-            cursor: pointer;
-            width: 100%;
-            border-radius: 4px;
-            transition: background 0.3s, border-color 0.3s;
-        }
-        .buy-btn:hover {
-            background: #250c36;
-            border-color: #ff007f;
-        }
-
-        /* Форма заказа (модалка) */
-        .modal {
-            display: none;
-            position: fixed;
-            z-index: 1000;
-            left: 0; top: 0; width: 100%; height: 100%;
-            background-color: rgba(13, 4, 20, 0.85);
-            backdrop-filter: blur(5px);
-        }
-        .modal-content {
-            background-color: #13061c;
-            margin: 10% auto; padding: 30px;
-            border: 2px solid #ff007f;
-            box-shadow: 0 0 25px #ff007f;
-            width: 90%; max-width: 400px;
-            border-radius: 8px; color: #ffffff;
-            position: relative;
-        }
-        .close-btn {
-            position: absolute; right: 20px; top: 15px;
-            color: #ff007f; font-size: 32px; cursor: pointer;
-        }
-        .modal h2 { margin: 0 0 10px 0; font-size: 22px; }
-        .modal p { color: #888888; font-size: 13px; margin: 0 0 20px 0; }
-        .modal input, .modal textarea {
-            width: 100%; padding: 12px; margin-bottom: 15px;
-            background: #0d0414; border: 1px solid #250c36;
-            border-radius: 4px; color: #ffffff; box-sizing: border-box;
-        }
-        .modal input:focus, .modal textarea:focus {
-            outline: none; border-color: #ff007f; box-shadow: 0 0 5px #ff007f;
-        }
-
-        /* --- НОВЫЙ БЛОК: СТИЛИ ДЛЯ ИИ-ЧАТА --- */
-        .ai-chat-trigger {
-            position: fixed;
-            bottom: 30px;
-            right: 30px;
-            width: 60px;
-            height: 60px;
-            background-color: #ff007f;
-            border-radius: 50%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            font-size: 28px;
-            cursor: pointer;
-            box-shadow: 0 0 15px #ff007f;
-            z-index: 999;
-            transition: transform 0.3s ease, background-color 0.3s;
-        }
-        .ai-chat-trigger:hover {
-            transform: scale(1.1);
-            background-color: #e60073;
-        }
-        .ai-chat-window {
-            display: none;
-            position: fixed;
-            bottom: 105px;
-            right: 30px;
-            width: 350px;
-            height: 450px;
-            background-color: #13061c;
-            border: 2px solid #ff007f;
-            box-shadow: 0 0 25px rgba(250, 0, 127, 0.4);
+            background: #111827;
+            border: 1px solid #1f2937;
             border-radius: 12px;
-            z-index: 999;
-            flex-direction: column;
-            overflow: hidden;
-            font-size: 14px;
+            padding: 25px;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.5);
         }
-        .ai-chat-header {
-            background-color: #1a0926;
-            padding: 15px;
-            border-bottom: 1px solid #250c36;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
+
+        .card h2 {
+            color: #38bdf8;
+            margin-bottom: 15px;
+            font-size: 1.5rem;
         }
-        .ai-chat-header h4 { margin: 0; font-size: 15px; color: #fff; display: flex; align-items: center; gap: 8px; }
-        .ai-chat-header h4::before { content: '●'; color: #00ffcc; text-shadow: 0 0 5px #00ffcc; }
-        .ai-chat-close { color: #ff007f; font-size: 20px; cursor: pointer; font-weight: bold; }
-        .ai-chat-messages {
-            flex: 1;
-            padding: 15px;
-            overflow-y: auto;
+
+        /* Интерактивный виджет ИИ */
+        .ai-box {
             display: flex;
             flex-direction: column;
-            gap: 10px;
-            background-color: #0d0414;
+            gap: 15px;
+            margin-top: 15px;
         }
-        .msg { max-width: 80%; padding: 10px 14px; border-radius: 8px; line-height: 1.4; word-wrap: break-word; }
-        .msg.bot { background-color: #250c36; color: #ffffff; align-self: flex-start; border-bottom-left-radius: 2px; border: 1px solid #3d1459; }
-        .msg.user { background-color: #ff007f; color: #ffffff; align-self: flex-end; border-bottom-right-radius: 2px; }
-        .ai-chat-input-area {
-            padding: 12px;
-            background-color: #13061c;
-            border-top: 1px solid #250c36;
-            display: flex;
-            gap: 10px;
+
+        textarea {
+            width: 100%;
+            height: 120px;
+            background: #1f2937;
+            border: 1px solid #374151;
+            border-radius: 8px;
+            padding: 15px;
+            color: #fff;
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 0.95rem;
+            resize: vertical;
         }
-        .ai-chat-input-area input {
-            flex: 1; background: #0d0414; border: 1px solid #250c36;
-            padding: 10px; border-radius: 4px; color: #fff;
+
+        textarea:focus {
+            outline: none;
+            border-color: #6366f1;
         }
-        .ai-chat-input-area input:focus { outline: none; border-color: #ff007f; }
-        .ai-send-btn {
-            background: #ff007f; border: none; color: #white; padding: 0 15px;
-            border-radius: 4px; color: #fff; font-weight: bold; cursor: pointer; transition: 0.2s;
+
+        button {
+            background: #4338ca;
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            font-size: 1rem;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: background 0.2s;
+            align-self: flex-start;
         }
-        .ai-send-btn:hover { background: #e60073; }
+
+        button:hover {
+            background: #4f46e5;
+        }
+
+        .ai-output {
+            background: #1e293b;
+            border-left: 4px solid #38bdf8;
+            padding: 15px;
+            border-radius: 4px;
+            display: none;
+            font-family: 'Courier New', Courier, monospace;
+            white-space: pre-wrap;
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            color: #4b5563;
+            font-size: 0.9rem;
+            border-top: 1px solid #1f2937;
+            margin-top: 60px;
+        }
     </style>
 </head>
 <body>
 
     <header>
-        <div class="logo">
-            <h1>Олеся Казарина</h1>
-            <p>комнатные растения с любовью</p>
-        </div>
-        <div class="header-right">
-            <div class="cart-status">Корзина: <span id="cart-count">0</span></div>
-            <button class="order-btn" onclick="openModal()">ЗАКАЗАТЬ</button>
-        </div>
+        <h1>🤖 AI Code Assistant</h1>
+        <p>Платформа автоматизации написания и анализа программного кода</p>
     </header>
 
-    <section class="hero">
-        <h2>Эстетика природы в вашем доме</h2>
-        <p>Бережно выращенные комнатные растения премиального качества.</p>
-    </section>
-
-    <section class="catalog">
-        <!-- Товар 1: Адениум -->
+    <div class="container">
+        
         <div class="card">
-            <img src="adenium.jpg.png" alt="Адениум">
-            <h3>Адениум</h3>
-            <p class="description">Изящный суккулент со скульптурным стволом-бонсай.</p>
-            <div class="price">3 400 ₽</div>
-            <button class="buy-btn" onclick="addToCart()">В КОРЗИНУ</button>
+            <h2>О технологии</h2>
+            <p>Наш искусственный интеллект интегрируется прямо в веб-интерфейс. Он способен проводить мгновенный аудит вашей кодовой базы, находить уязвимости, генерировать шаблоны функций и оптимизировать алгоритмы в реальном времени.</p>
         </div>
 
-        <!-- Товар 2: Кратон -->
         <div class="card">
-            <img src="croton.jpg" alt="Кратон">
-            <h3>Кратон</h3>
-            <p class="description">Яркое лиственное растение с огненной палитрой листьев.</p>
-            <div class="price">2 900 ₽</div>
+            <h2>Интерактивный ИИ-помощник (Тест-драйв)</h2>
+            <p style="color: #9ca3af; margin-bottom: 10px;">Введите описание задачи или кусок кода, и нейросеть сгенерирует решение:</p>
+            
+            <div class="ai-box">
+                <textarea id="ai-input" placeholder="Например: Напиши функцию валидации email на JavaScript..."></textarea>
+                <button onclick="runAi()">Сгенерировать код</button>
+                <div id="ai-output" class="ai-output"></div>
+            </div>
+        </div>
+
+    </div>
+
+    <footer>
+        &copy; 2026 AI Code Agent. Все права защищены.
+    </footer>
+
+    <script>
+        function runAi() {
+            const input = document.getElementById('ai-input').value.trim();
+            const outputDiv = document.getElementById('ai-output');
+            
+            if (!input) {
+                alert('Пожалуйста, введите запрос!');
+                return;
+            }
+
+            outputDiv.style.display = 'block';
+            outputDiv.innerHTML = '⚡ <i>ИИ анализирует запрос и генерирует код...</i>';
+
+            // Имитация работы нейросети на клиенте
+            setTimeout(() => {
+                outputDiv.innerHTML = `// [Ответ AI Assistant]\n// Результат для запроса: "${input}"\n\nfunction processAiTask() {\n    console.log("Действие выполнено успешно!");\n    return true;\n}`;
+            }, 1200);
+        }
+    </script>
+
+</body>
+</html>
