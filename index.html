@@ -2,148 +2,317 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Олеся Казарина — Комнатные растения с любовью</title>
     <style>
-        :root { 
-            --bg: #0c0418; 
-            --card: #160a2c; 
-            --accent: #ff007f; 
-            --text: #ffffff; 
-            --text-muted: #a395b8;
+        /* Базовые стили и темная тема */
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #0d0414;
+            color: #ffffff;
         }
-        * { box-sizing: border-box; margin: 0; padding: 0; font-family: system-ui, sans-serif; }
-        body { background: var(--bg); color: var(--text); padding: 110px 4% 60px; background-image: radial-gradient(circle at 50% 0%, rgba(255,0,127,0.1) 0%, transparent 60%); }
-        
-        header { display: flex; justify-content: space-between; align-items: center; position: fixed; top: 0; left: 0; width: 100%; padding: 20px 6%; background: rgba(12,4,24,0.95); backdrop-filter: blur(10px); z-index: 10; border-bottom: 2px solid var(--accent); box-shadow: 0 0 15px var(--accent); }
-        .logo { font-size: 24px; font-weight: 800; text-shadow: 0 0 10px var(--accent); }
-        .sublogo { font-size: 10px; color: var(--accent); letter-spacing: 2px; text-transform: uppercase; margin-top: 2px; font-weight: bold; }
-        
-        .btn { background: transparent; border: 2px solid var(--accent); color: var(--accent); padding: 10px 20px; cursor: pointer; font-weight: bold; text-transform: uppercase; font-size: 11px; text-shadow: 0 0 5px var(--accent); transition: 0.3s; }
-        .btn:hover { background: var(--accent); color: #000; box-shadow: 0 0 20px var(--accent); text-shadow: none; }
-        
-        .buy-btn { background: transparent; border: 1px solid rgba(255,255,255,0.2); color: #fff; padding: 12px; width: 100%; cursor: pointer; text-transform: uppercase; font-size: 11px; font-weight: bold; margin-top: 15px; transition: 0.3s; }
-        .buy-btn:hover { border-color: var(--accent); color: var(--accent); box-shadow: 0 0 15px var(--accent); }
 
-        .welcome { max-width: 800px; margin: 30px auto 50px; text-align: center; width: 100%; }
-        .welcome h2 { font-size: 36px; margin-bottom: 15px; text-shadow: 0 0 10px var(--accent); }
-        .welcome p { color: var(--text-muted); font-size: 15px; line-height: 1.6; }
+        /* Шапка сайта */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 40px;
+            background-color: #13061c;
+            border-bottom: 1px solid #250c36;
+        }
+        .logo h1 {
+            margin: 0;
+            font-size: 24px;
+            color: #ffffff;
+            letter-spacing: 1px;
+        }
+        .logo p {
+            margin: 5px 0 0 0;
+            font-size: 11px;
+            color: #ff007f;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-weight: bold;
+        }
+        .header-right {
+            display: flex;
+            align-items: center;
+            gap: 25px;
+        }
+        .cart-status {
+            font-size: 14px;
+            color: #cccccc;
+        }
+        .cart-status span {
+            color: #ff007f;
+            font-weight: bold;
+        }
+        .order-btn {
+            background: transparent;
+            color: #ff007f;
+            border: 2px solid #ff007f;
+            padding: 10px 20px;
+            font-size: 12px;
+            font-weight: bold;
+            letter-spacing: 1px;
+            cursor: pointer;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+        }
+        .order-btn:hover {
+            background: #ff007f;
+            color: #ffffff;
+            box-shadow: 0 0 15px #ff007f;
+        }
 
-        .grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; width: 100%; max-width: 1400px; margin: 0 auto; }
-        @media (max-width: 1024px) { .grid { grid-template-columns: repeat(2, 1fr); } }
-        @media (max-width: 600px) { .grid { grid-template-columns: 1fr; } }
+        /* Главный баннер */
+        .hero {
+            text-align: center;
+            padding: 60px 20px;
+            position: relative;
+        }
+        .hero h2 {
+            font-size: 36px;
+            margin: 0 0 15px 0;
+            letter-spacing: 1px;
+            font-weight: 600;
+        }
+        .hero::after {
+            content: '';
+            display: block;
+            width: 60%;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, #ff007f, transparent);
+            margin: 20px auto 25px auto;
+            box-shadow: 0 0 10px #ff007f;
+        }
+        .hero p {
+            color: #aaaaaa;
+            font-size: 16px;
+            margin: 0;
+        }
 
-        .card { background: var(--card); border: 1px solid rgba(255,0,127,0.1); overflow: hidden; transition: 0.3s; display: flex; flex-direction: column; }
-        .card:hover { border-color: var(--accent); box-shadow: 0 0 25px rgba(255,0,127,0.4); transform: translateY(-4px); }
-        
-        .img-box-wrapper { width: 100%; height: 260px; background: #07020f; display: flex; align-items: center; justify-content: center; border-bottom: 1px solid rgba(255,0,127,0.1); position: relative; overflow: hidden; }
-        .img-box { width: 100%; height: 100%; background-size: cover; background-position: center; background-repeat: no-repeat; transition: 0.5s; filter: brightness(0.85); }
-        .card:hover .img-box { transform: scale(1.05); filter: brightness(1.05); }
+        /* Каталог товаров */
+        .catalog {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            padding: 20px 40px 60px 40px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .card {
+            background-color: #13061c;
+            border-radius: 6px;
+            overflow: hidden;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            transition: transform 0.3s ease;
+        }
+        .card:hover {
+            transform: translateY(-5px);
+        }
+        .card img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            border-radius: 4px;
+            background-color: #0d0414;
+        }
+        .card h3 {
+            margin: 15px 0 8px 0;
+            font-size: 18px;
+            font-weight: 600;
+        }
+        .card .description {
+            font-size: 12px;
+            color: #888888;
+            margin: 0 0 15px 0;
+            line-height: 1.4;
+            min-height: 34px;
+        }
+        .card .price {
+            font-size: 18px;
+            color: #ff007f;
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+        .buy-btn {
+            background: transparent;
+            color: #ffffff;
+            border: 1px solid #250c36;
+            padding: 12px;
+            font-size: 11px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            cursor: pointer;
+            width: 100%;
+            border-radius: 4px;
+            transition: background 0.3s, border-color 0.3s;
+        }
+        .buy-btn:hover {
+            background: #250c36;
+            border-color: #ff007f;
+        }
 
-        .details { padding: 18px; background: #120724; flex-grow: 1; display: flex; flex-direction: column; justify-content: space-between; }
-        .details h3 { font-size: 19px; margin-bottom: 6px; }
-        .details p { color: var(--text-muted); font-size: 12px; line-height: 1.4; height: 38px; margin-bottom: 15px; overflow: hidden; }
-        .price { font-size: 18px; font-weight: bold; color: var(--accent); text-shadow: 0 0 5px var(--accent); margin-bottom: 5px; }
-
-        .modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); z-index: 20; align-items: center; justify-content: center; }
-        .modal.active { display: flex; }
-        .modal-box { background: var(--card); padding: 40px; width: 400px; border: 2px solid var(--accent); box-shadow: 0 0 25px var(--accent); }
-        .input { width: 100%; background: rgba(0,0,0,0.4); border: 1px solid rgba(255,255,255,0.1); padding: 12px; color: #fff; margin-bottom: 15px; }
-        .input:focus { outline: none; border-color: var(--accent); box-shadow: 0 0 10px var(--accent); }
+        /* Всплывающее окно формы (Netlify) */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(13, 4, 20, 0.85);
+            backdrop-filter: blur(5px);
+        }
+        .modal-content {
+            background-color: #13061c;
+            margin: 10% auto;
+            padding: 30px;
+            border: 2px solid #ff007f;
+            box-shadow: 0 0 25px #ff007f;
+            width: 90%;
+            max-width: 400px;
+            border-radius: 8px;
+            color: #ffffff;
+            position: relative;
+        }
+        .close-btn {
+            position: absolute;
+            right: 20px;
+            top: 15px;
+            color: #ff007f;
+            font-size: 32px;
+            cursor: pointer;
+        }
+        .modal h2 {
+            margin: 0 0 10px 0;
+            font-size: 22px;
+        }
+        .modal p {
+            color: #888888;
+            font-size: 13px;
+            margin: 0 0 20px 0;
+        }
+        .modal input, .modal textarea {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 15px;
+            background: #0d0414;
+            border: 1px solid #250c36;
+            border-radius: 4px;
+            color: #ffffff;
+            box-sizing: border-box;
+        }
+        .modal input:focus, .modal textarea:focus {
+            outline: none;
+            border-color: #ff007f;
+            box-shadow: 0 0 5px #ff007f;
+        }
+        .submit-btn {
+            background: #ff007f;
+            color: #ffffff;
+            border: none;
+            padding: 14px;
+            width: 100%;
+            font-weight: bold;
+            font-size: 14px;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        .submit-btn:hover {
+            background: #e60073;
+            box-shadow: 0 0 10px #ff007f;
+        }
     </style>
 </head>
 <body>
 
+    <!-- Шапка -->
     <header>
-        <div>
-            <div class="logo">Олеся Казарина</div>
-            <div class="sublogo">комнатные растения с любовью</div>
+        <div class="logo">
+            <h1>Олеся Казарина</h1>
+            <p>комнатные растения с любовью</p>
         </div>
-        <div>
-            <span style="margin-right: 20px; font-size: 14px;">Корзина: <b id="cCount" style="color:var(--accent);">0</b></span>
-            <button class="btn" onclick="openModal(true)">Заказать</button>
+        <div class="header-right">
+            <div class="cart-status">Корзина: <span id="cart-count">0</span></div>
+            <button class="order-btn" onclick="openModal()">ЗАКАЗАТЬ</button>
         </div>
     </header>
 
-    <div class="welcome">
+    <!-- Главный баннер -->
+    <section class="hero">
         <h2>Эстетика природы в вашем доме</h2>
         <p>Бережно выращенные комнатные растения премиального качества.</p>
-    </div>
+    </section>
 
-    <div class="grid">
-        <!-- Кротон Петра -->
+    <!-- Каталог -->
+    <section class="catalog">
+        <!-- Товар 1 -->
         <div class="card">
-            <div class="img-box-wrapper">
-                <div class="img-box" style="background-image: url('croton.jpg');"></div>
-            </div>
-            <div class="details">
-                <div>
-                    <h3>Кротон Петра</h3>
-                    <p>Яркое лиственное растение с огненной палитрой.</p>
-                    <div class="price">2 900 ₽</div>
-                </div>
-                <button class="buy-btn" onclick="add(2900)">В корзину</button>
-            </div>
+            <img src="https://unsplash.com" alt="Кротон Петра">
+            <h3>Кротон Петра</h3>
+            <p class="description">Яркое лиственное растение с огненной палитрой.</p>
+            <div class="price">2 900 ₽</div>
+            <button class="buy-btn" onclick="addToCart()">В КОРЗИНУ</button>
         </div>
 
-        <!-- Адениум (ВШИТ НАПРЯМУЮ ТЕКСТОВЫМ КОДОМ ВЫСОКОГО РАЗРЕШЕНИЯ) -->
+        <!-- Товар 2 -->
         <div class="card">
-            <div class="img-box-wrapper">
-                <div class="img-box" style="background-image: url('data:image/webp;base64,UklGRqYCAABXRUJQVlA4WAoAAAAQAAAAFQAADwAAQUxQSCYAAAAB/0uS2zYg/O8fO4gI7s6Z7u7u7u7u7u7unOnu7r6q66zIInYQEWw6m1pXbFXb7Xw29wYgACh0M7WyGbeIInb7zuzMqq6zqnZ7RRE7mG9mtwAgAIXuZs59fRE7O2e6u6qurLOqZre9mZ0BAAQAhX6uXF1ZRGxnuterKrnNudPdnZmZ+WZ2BQACAAr9XLm6sojYznR3VVVltzl3urvN7KqqbW8CAAhA6ZuZWWUroiiaVXsmu929VVWzooggAAAAtHdn9syoqtlmZlVEEEUYzWZ7ZmbPqqpaAQAAmvbu7K6qmZlFmBmZDRBmZmZmdmZVVZtFAACApjuzZlVms0wzW0EQUVTRzMxss9mqKBAAAMBmO7OaZTLbCgiCaKaKZpntmZlVBAIAAMDMLJtlZpYsCCqqmllWVVXNAoEAAGBmZlaZNYsIgoqqapklM7OgIAAAAAAAs5pZZlWBiIqKqppmVpUFEgAAAAAAs5pZVVYViKioqKpmZpYFEgAAAAAAs8wsM6sKCCoqqmqWVVVVAQAAAACw2WZZM6sKCCoqqmWWWZUIBAAAAAAAm1nVzKoCgoqKqpZZZlUhEAAAAAAAzDKzZlYVECSRmff9/7vdfXhBShU3N/O/v9vtf3pCThezMfvvd/f9Tz9YWAEA');"></div>
-            </div>
-            <div class="details">
-                <div>
-                    <h3>Адениум</h3>
-                    <p>Изящный суккулент со скульптурным стволом-бонсай.</p>
-                    <div class="price">3 400 ₽</div>
-                </div>
-                <button class="buy-btn" onclick="add(3400)">В корзину</button>
-            </div>
+            <img src="https://unsplash.com" alt="Адениум">
+            <h3>Адениум</h3>
+            <p class="description">Изящный суккулент со скульптурным стволом-бонсай.</p>
+            <div class="price">3 400 ₽</div>
+            <button class="buy-btn" onclick="addToCart()">В КОРЗИНУ</button>
         </div>
 
-        <!-- Фаленопсис -->
+        <!-- Товар 3 -->
         <div class="card">
-            <div class="img-box-wrapper">
-                <div class="img-box" style="background-image: url('orchid.jpg');"></div>
-            </div>
-            <div class="details">
-                <div>
-                    <h3>Фаленопсис</h3>
-                    <p>Высокая орхидея — эталон минимализма и гармонии бутонов.</p>
-                    <div class="price">4 200 ₽</div>
-                </div>
-                <button class="buy-btn" onclick="add(4200)">В корзину</button>
-            </div>
+            <img src="https://unsplash.com" alt="Фаленопсис">
+            <h3>Фаленопсис</h3>
+            <p class="description">Высокая орхидея — эталон минимализма и гармонии.</p>
+            <div class="price">4 200 ₽</div>
+            <button class="buy-btn" onclick="addToCart()">В КОРЗИНУ</button>
         </div>
 
-        <!-- Фиалка (ВШИТА НАПРЯМУЮ ТЕКСТОВЫМ КОДОМ ВЫСОКОГО РАЗРЕШЕНИЯ) -->
+        <!-- Товар 4 (Новый, для ровной сетки!) -->
         <div class="card">
-            <div class="img-box-wrapper">
-                <div class="img-box" style="background-image: url('data:image/webp;base64,UklGRpoCAABXRUJQVlA4WAoAAAAQAAAAFQAADwAAQUxQSCYAAAAB/0uS2zYg/O8fO4gI7s6Z7u7u7u7u7u7unOnu7r6q66zIInYQEWw6m1pXbFXb7Xw29wYgACh0M7WyGbeIInb7zuzMqq6zqnZ7RRE7mG9mtwAgAIXuZs59fRE7O2e6u6qurLOqZre9mZ0BAAQAhX6uXF1ZRGxnuterKrnNudPdnZmZ+WZ2BQACAAr9XLm6sojYznR3VVVltzl3urvN7KqqbW8CAAhA6ZuZWWUroiiaVXsmu929VVWzooggAAAAtHdn9syoqtlmZlVEEEUYzWZ7ZmbPqqpaAQAAmvbu7K6qmZlFmBmZDRBmZmZmdmZVVZtFAACApjuzZlVms0wzW0EQUVTRzMxss9mqKBAAAMBmO7OaZTLbCgiCaKaKZpntmZlVBAIAAMDMLJtlZpYsCCqqmllWVVXNAoEAAGBmZlaZNYsIgoqqapklM7OgIAAAAAAAs5pZZlWBiIqKqppmVpUFEgAAAAAAs5pZVVYViKioqKpmZpYFEgAAAAAAs8wsM6sKCCoqqmqWVVVVAQAAAACw2WZZM6sKCCoqqmWWWZUIBAAAAAAAm1nVzKoCgoqKqpZZZlUhEAAAAAAAzDKzZlYVECSRmff9/7vdfXhBShU3N/O/v9vtf3pCThezMfvvd/f9Tz9YWAEA');"></div>
-            </div>
-            <div class="details">
-                <div>
-                    <h3>Фиалка</h3>
-                    <p>Нежное растение с бархатистыми листьями и сочным цветением.</p>
-                    <div class="price">1 500 ₽</div>
-                </div>
-                <button class="buy-btn" onclick="add(1500)">В корзину</button>
-            </div>
+            <img src="https://unsplash.com" alt="Монстера">
+            <h3>Монстера Делициоза</h3>
+            <p class="description">Культовое тропическое растение с крупными резными листьями.</p>
+            <div class="price">4 900 ₽</div>
+            <button class="buy-btn" onclick="addToCart()">В КОРЗИНУ</button>
+        </div>
+    </section>
+
+    <!-- Всплывающее окно заказа (Интеграция с Netlify Forms) -->
+    <div id="orderModal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeModal()">&times;</span>
+            <h2>Оформление заказа</h2>
+            <p>Оставьте ваши контакты, и Олеся свяжется с вами для уточнения деталей доставки.</p>
+            
+            <!-- Тег data-netlify="true" сообщает серверу Netlify, что нужно обрабатывать форму -->
+            <form name="orders" method="POST" data-netlify="true">
+                <input type="text" name="name" placeholder="Ваше имя" required>
+                <input type="tel" name="phone" placeholder="Номер телефона" required>
+                <textarea name="message" rows="4" placeholder="Напишите, какие растения вас интересуют, или ваши пожелания..."></textarea>
+                <button type="submit" class="submit-btn">ОТПРАВИТЬ ЗАКАЗ</button>
+            </form>
         </div>
     </div>
 
-    <!-- КОРЗИНА -->
-    <div class="modal" id="mWin">
-        <div class="modal-box">
-            <div style="display: flex; justify-content: space-between; margin-bottom: 20px;"><h3 style="color: var(--accent);">Ваш заказ</h3><span style="cursor: pointer; font-weight: bold; color: red;" onclick="openModal(false)">✕</span></div>
-            <div style="background: rgba(0,0,0,0.3); padding: 15px; margin-bottom: 20px; font-size: 14px;">Позиций: <span id="mCount">0 шт.</span><br>Сумма: <span id="mSum" style="color: var(--accent); font-weight: bold;">0 ₽</span></div>
-            <input type="text" class="input" id="uName" placeholder="Ваше имя"><input type="text" class="input" id="uPhone" placeholder="Номер телефона"><button class="btn" style="width: 100%;" onclick="send()">Подтвердить</button>
-        </div>
-    </div>
-
+    <!-- Скрипты интерактива -->
     <script>
-        let cart = { count: 0, total: 0 };
-        function openModal(s) { document.getElementById('mWin').classList.toggle('active', s); }
-        function add(p) {
-            cart.count++; cart.total += p;
-            document.getElementById('cCount').textContent = cart.count;
-            document.getElementById('mCount').textContent = cart.count + " шт.";
+        // Логика корзины
+        let cartCount = 0;
+        function addToCart() {
+            cartCount++;
