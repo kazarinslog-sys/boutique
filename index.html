@@ -80,7 +80,7 @@
             100% { transform: translateX(calc(-260px * 4 - 25px * 4)); }
         }
 
-        /* ИСПРАВЛЕННОЕ СТИЛЬНОЕ ОКНО ПЕРЕХОДА */
+        /* ОКНО ПЕРЕХОДА */
         .max-modal {
             display: none;
             position: fixed;
@@ -117,7 +117,8 @@
             display: block;
         }
 
-        .max-btn-action {
+        /* ПРЯМАЯ КНОПКА-ССЫЛКА БЕЗ JAVASCRIPT */
+        .max-btn-link {
             display: block;
             width: 100%;
             padding: 14px;
@@ -126,7 +127,6 @@
             border: none;
             border-radius: 6px;
             font-weight: bold;
-            cursor: pointer;
             text-decoration: none;
             text-transform: uppercase;
             font-size: 0.9rem;
@@ -134,7 +134,7 @@
             transition: 0.2s;
             box-shadow: 0 4px 12px rgba(225, 29, 72, 0.2);
         }
-        .max-btn-action:hover { background: #be123c; }
+        .max-btn-link:hover { background: #be123c; }
         
         .max-close {
             position: absolute;
@@ -185,9 +185,9 @@
             <div class="gallery-item">
                 <img src="phalaenopsis.jpg" alt="Фаленопсис">
                 <h3>Фаленопсис</h3>
-                <p class="desc">Высокая орхидея — эталон минимализма и гармонии.</p>
+                <p class="desc">Высокая орхидея — эталон minimal-дизайна и гармонии.</p>
             </div>
-            <!-- Дубликаты для бесконечной ленты -->
+            <!-- Дубликаты -->
             <div class="gallery-item">
                 <img src="adenium.jpg.png" alt="Адениум">
                 <h3>Адениум</h3>
@@ -206,21 +206,22 @@
             <div class="gallery-item">
                 <img src="phalaenopsis.jpg" alt="Фаленопсис">
                 <h3>Фаленопсис</h3>
-                <p class="desc">Высокая орхидея — эталон минимализма и гармонии.</p>
+                <p class="desc">Высокая орхидея — эталон minimal-дизайна и гармонии.</p>
             </div>
         </div>
     </div>
 
-    <!-- Новое безотказное окно перехода -->
+    <!-- Исправленное модальное окно -->
     <div id="maxModal" class="max-modal">
         <div class="max-modal-content">
             <span class="max-close" onclick="closeMaxModal()">&times;</span>
             <h3>Переход в Бутик</h3>
-            <p>Нажмите кнопку ниже, чтобы запустить приложение MAX. Если группа не открылась автоматически, введите в поиске приложения:</p>
+            <p>Нажмите кнопку ниже для перехода в приложение MAX. Если чат группы не открылся автоматически, введите в поиске приложения:</p>
             
             <div class="search-badge">boutique_flower</div>
             
-            <button class="max-btn-action" onclick="goToMaxApp()">Открыть приложение MAX</button>
+            <!-- Физическая прямая ссылка-команда, которую телефон обязан выполнить -->
+            <a href="max://join/dAVemh769D5wM0o1JJGy1yvAw-xkrwqF5m8N2U_aneU" class="max-btn-link" onclick="closeMaxModal()">Открыть приложение MAX</a>
         </div>
     </div>
 
@@ -230,11 +231,6 @@
         }
         function closeMaxModal() {
             document.getElementById('maxModal').style.display = 'none';
-        }
-        function goToMaxApp() {
-            // Принудительный прямой запуск установленного приложения на телефоне или ПК
-            window.location.href = "max://join/dAVemh769D5wM0o1JJGy1yvAw-xkrwqF5m8N2U_aneU";
-            closeMaxModal();
         }
     </script>
 </body>
