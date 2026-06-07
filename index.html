@@ -43,7 +43,6 @@
             box-shadow: 0 0 10px #e11d48; 
         }
         
-        /* КОНТЕЙНЕР ДЛЯ ДВИЖЕНИЯ */
         .slider-container { 
             max-width: 100%; 
             overflow: hidden; 
@@ -52,7 +51,6 @@
             position: relative;
         }
         
-        /* БЕГУЩАЯ СТРОКА ИЗ КАРТОЧЕК */
         .gallery-track { 
             display: flex; 
             gap: 25px; 
@@ -60,7 +58,6 @@
             animation: scrollMarquee 25s linear infinite; 
         }
         
-        /* Останавливать движение при наведении мышки */
         .slider-container:hover .gallery-track {
             animation-play-state: paused;
         }
@@ -72,16 +69,73 @@
             display: flex; 
             flex-direction: column; 
             padding-bottom: 20px; 
-            width: 260px; /* Фиксированная ширина для анимации */
+            width: 260px; 
         }
         .gallery-item img { width: 100%; height: 260px; object-fit: cover; background-color: #0d0614; }
         .gallery-item h3 { padding: 15px 15px 5px 15px; color: #fff; font-size: 1.2rem; font-weight: 500; }
         .gallery-item .desc { padding: 0 15px 15px 15px; font-size: 0.85rem; color: #6b7280; line-height: 1.4; }
 
-        /* НАСТРОЙКА АНИМАЦИИ ДВИЖЕНИЯ */
         @keyframes scrollMarquee {
             0% { transform: translateX(0); }
             100% { transform: translateX(calc(-260px * 4 - 25px * 4)); }
+        }
+
+        /* КРАСИВОЕ МОДАЛЬНОЕ ОКНО ПЕРЕХОДА */
+        .max-modal {
+            display: none;
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(13, 6, 20, 0.85);
+            backdrop-filter: blur(5px);
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+        }
+        .max-modal-content {
+            background: #13091f;
+            border: 1px solid #e11d48;
+            padding: 30px;
+            text-align: center;
+            border-radius: 8px;
+            max-width: 360px;
+            width: 90%;
+            box-shadow: 0 0 20px rgba(225, 29, 72, 0.2);
+            position: relative;
+        }
+        .max-modal-content h3 { margin-bottom: 12px; color: #fff; font-size: 1.3rem; }
+        .max-modal-content p { margin-bottom: 24px; color: #9ca3af; font-size: 0.9rem; }
+        .max-btn {
+            display: block;
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 12px;
+            border-radius: 4px;
+            font-weight: bold;
+            cursor: pointer;
+            text-decoration: none;
+            text-transform: uppercase;
+            font-size: 0.85rem;
+            letter-spacing: 0.5px;
+            transition: 0.2s;
+        }
+        .max-btn-primary {
+            background: #e11d48;
+            color: #fff;
+            border: none;
+        }
+        .max-btn-primary:hover { background: #be123c; }
+        .max-btn-secondary {
+            background: transparent;
+            color: #9ca3af;
+            border: 1px solid #374151;
+        }
+        .max-btn-secondary:hover { border-color: #6b7280; color: #fff; }
+        .max-close {
+            position: absolute;
+            top: 10px; right: 15px;
+            color: #6b7280;
+            cursor: pointer;
+            font-size: 1.4rem;
         }
     </style>
 </head>
@@ -93,7 +147,7 @@
         </div>
         <div class="header-right">
             <div class="cart-status">Корзина: 0</div>
-            <button class="order-top-btn" onclick="openMaxGroup()">ЗАКАЗАТЬ</button>
+            <button class="order-top-btn" onclick="openMaxModal()">ЗАКАЗАТЬ</button>
         </div>
     </header>
     
@@ -103,10 +157,8 @@
         <div class="neon-line"></div>
     </div>
 
-    <!-- Движущаяся галерея -->
     <div class="slider-container">
         <div class="gallery-track">
-            <!-- Первая группа цветов -->
             <div class="gallery-item">
                 <img src="adenium.jpg.png" alt="Адениум">
                 <h3>Адениум</h3>
@@ -127,7 +179,7 @@
                 <h3>Фаленопсис</h3>
                 <p class="desc">Высокая орхидея — эталон минимализма и гармонии.</p>
             </div>
-            <!-- Дубликат для бесконечного плавного эффекта -->
+            <!-- Дубликаты для бесконечной ленты -->
             <div class="gallery-item">
                 <img src="adenium.jpg.png" alt="Адениум">
                 <h3>Адениум</h3>
@@ -151,13 +203,28 @@
         </div>
     </div>
 
-        <script>
-        function openMaxGroup() {
-            // Прямой и безопасный переход, который мобильные телефоны не будут блокировать
-            window.open('https://max.ru', '_blank');
+    <!-- Умное окно выбора перехода -->
+    <div id="maxModal" class="max-modal">
+        <div class="max-modal-content">
+            <span class="max-close" onclick="closeMaxModal()">&times;</span>
+            <h3>Переход в группу Бутика</h3>
+            <p>Выберите удобный способ открыть мессенджер MAX:</p>
+            
+            <!-- Кнопка 1: Принудительный запуск установленного приложения -->
+            <a href="max://join/dAVemh769D5wM0o1JJGy1yvAw-xkrwqF5m8N2U_aneU" class="max-btn max-btn-primary" onclick="closeMaxModal()">Открыть в приложении</a>
+            
+            <!-- Кнопка 2: Обычная ссылка для браузера -->
+            <a href="https://max.ru" target="_blank" class="max-btn max-btn-secondary" onclick="closeMaxModal()">Перейти через браузер</a>
+        </div>
+    </div>
+
+    <script>
+        function openMaxModal() {
+            document.getElementById('maxModal').style.display = 'flex';
+        }
+        function closeMaxModal() {
+            document.getElementById('maxModal').style.display = 'none';
         }
     </script>
-
-
 </body>
 </html>
