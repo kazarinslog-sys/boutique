@@ -91,8 +91,8 @@
         </div>
         <div class="header-right">
             <div class="cart-status">Корзина: 0</div>
-            <!-- Прямая физическая кнопка-ссылка, которая форсирует открытие приложения -->
-            <a href="max://join/dAVemh769D5wM0o1JJGy1yvAw-xkrwqF5m8N2U_aneU" class="order-top-btn" id="orderBtn">ЗАКАЗАТЬ</a>
+            <!-- Смарт-ссылка для гарантированного запуска приложения -->
+            <a href="https://clck.ru" class="order-top-btn" id="smartLink">ЗАКАЗАТЬ</a>
         </div>
     </header>
     
@@ -149,15 +149,16 @@
     </div>
 
     <script>
-        // Умный переключатель ссылок в зависимости от устройства
         document.addEventListener("DOMContentLoaded", function() {
-            const btn = document.getElementById("orderBtn");
-            const isMobile = /Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
+            // Собираем прямую команду мессенджера
+            const token = "dAVemh769D5wM0o1JJGy1yvAw-xkrwqF5m8N2U_aneU";
+            const btn = document.getElementById("smartLink");
             
-            if (isMobile) {
-                // На смартфонах даем веб-ссылку на группу, которая сама дернет приложение мессенджера
-                btn.setAttribute("href", "https://max.ru");
-                btn.setAttribute("target", "_blank");
+            // Если клиент зашел со смартфона, подменяем адрес на прямую мобильную команду
+            if (/Android|iPhone|iPad|iPod/i.test(navigator.userAgent)) {
+                btn.setAttribute("href", "intent://join/" + token + "#Intent;scheme=max;package=ru.max.app;end");
+            } else {
+                btn.setAttribute("href", "max://join/" + token);
             }
         });
     </script>
