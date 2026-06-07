@@ -91,8 +91,8 @@
         </div>
         <div class="header-right">
             <div class="cart-status">Корзина: 0</div>
-            <!-- Смарт-ссылка для гарантированного запуска приложения -->
-            <a href="https://clck.ru" class="order-top-btn" id="smartLink">ЗАКАЗАТЬ</a>
+            <!-- Прямая веб-ссылка, открывающая чат в браузере без требования скачать приложение -->
+            <a href="https://max.ru" target="_blank" class="order-top-btn">ЗАКАЗАТЬ</a>
         </div>
     </header>
     
@@ -124,7 +124,7 @@
                 <h3>Фаленопсис</h3>
                 <p class="desc">Высокая орхидея — эталон minimal-дизайна и гармонии.</p>
             </div>
-            <!-- Дубликаты для бесконечной ленты -->
+            <!-- Дубликаты -->
             <div class="gallery-item">
                 <img src="adenium.jpg.png" alt="Адениум">
                 <h3>Адениум</h3>
@@ -147,20 +147,5 @@
             </div>
         </div>
     </div>
-
-    <script>
-        document.addEventListener("DOMContentLoaded", function() {
-            // Собираем прямую команду мессенджера
-            const token = "dAVemh769D5wM0o1JJGy1yvAw-xkrwqF5m8N2U_aneU";
-            const btn = document.getElementById("smartLink");
-            
-            // Если клиент зашел со смартфона, подменяем адрес на прямую мобильную команду
-            if (/Android|iPhone|iPad|iPod/i.test(navigator.userAgent)) {
-                btn.setAttribute("href", "intent://join/" + token + "#Intent;scheme=max;package=ru.max.app;end");
-            } else {
-                btn.setAttribute("href", "max://join/" + token);
-            }
-        });
-    </script>
 </body>
 </html>
