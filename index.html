@@ -3,92 +3,101 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Эстетика природы в вашем доме</title>
+    <title>Олеся Казарина — Комнатные растения с любовью</title>
     <style>
-        * { 
-            box-sizing: border-box; 
-            margin: 0; 
-            padding: 0; 
-            font-family: 'Segoe UI', sans-serif; 
-        }
-        body { 
-            background-color: #0b0f19; 
-            color: #f3f4f6; 
-            padding-bottom: 60px; 
-        }
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', sans-serif; }
+        body { background-color: #0d0614; color: #f3f4f6; padding-bottom: 60px; }
         header { 
-            background: linear-gradient(135deg, #111827, #1f2937); 
-            padding: 40px 20px; 
-            text-align: center; 
-            border-bottom: 2px solid #10b981; 
-        }
-        header h1 { 
-            color: #10b981; 
-            margin-bottom: 10px; 
-        }
-        .container { 
-            max-width: 1000px; 
-            margin: 40px auto; 
-            padding: 0 20px; 
-        }
-        .gallery { 
-            display: grid; 
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); 
-            gap: 20px; 
-        }
-        .gallery-item { 
-            background: #111827; 
-            border-radius: 12px; 
-            overflow: hidden; 
-            border: 1px solid #1f2937; 
+            background: #13091f; 
+            padding: 30px 40px; 
             display: flex; 
-            flex-direction: column; 
-            padding-bottom: 15px; 
+            justify-content: space-between; 
+            align-items: center; 
+            border-bottom: 1px solid #2d124d; 
         }
-        .gallery-item img { 
-            width: 100%; 
-            height: 200px; 
-            object-fit: cover; 
-        }
-        .gallery-item h3 { 
-            padding: 15px 15px 5px 15px; 
+        .logo-block { text-align: left; }
+        .logo-block h1 { color: #fff; font-size: 1.8rem; font-weight: bold; }
+        .logo-block p { color: #e11d48; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 2px; margin-top: 5px; }
+        .header-right { display: flex; align-items: center; gap: 25px; }
+        .cart-status { color: #e11d48; font-weight: 500; }
+        .order-top-btn { 
+            border: 2px solid #e11d48; 
+            background: transparent; 
             color: #fff; 
+            padding: 8px 18px; 
+            border-radius: 4px; 
+            cursor: pointer; 
+            font-weight: bold; 
+            font-size: 0.85rem; 
+            letter-spacing: 1px; 
+            text-transform: uppercase;
         }
-        .gallery-item p { 
-            padding: 0 15px 15px 15px; 
-            font-size: 0.9rem; 
-            color: #9ca3af; 
+        .hero { text-align: center; padding: 60px 20px 40px 20px; position: relative; }
+        .hero h2 { font-size: 2.5rem; color: #fff; margin-bottom: 15px; font-weight: 600; }
+        .hero p { color: #9ca3af; font-size: 1.1rem; }
+        .neon-line { 
+            height: 2px; 
+            max-width: 600px; 
+            margin: 30px auto 0 auto; 
+            background: linear-gradient(90deg, transparent, #e11d48, transparent); 
+            box-shadow: 0 0 10px #e11d48; 
         }
+        .container { max-width: 1100px; margin: 20px auto; padding: 0 20px; }
+        .gallery { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 25px; }
+        .gallery-item { background: #13091f; border-radius: 0px; overflow: hidden; display: flex; flex-direction: column; padding-bottom: 20px; transition: 0.3s; }
+        .gallery-item img { width: 100%; height: 260px; object-fit: cover; background-color: #0d0614; }
+        .gallery-item h3 { padding: 15px 15px 5px 15px; color: #fff; font-size: 1.2rem; font-weight: 500; }
+        .gallery-item .desc { padding: 0 15px 15px 15px; font-size: 0.85rem; color: #6b7280; line-height: 1.4; }
     </style>
 </head>
 <body>
     <header>
-        <h1>🌿 Бутик цветов</h1>
-        <p>Эстетика природы в вашем доме</p>
+        <div class="logo-block">
+            <h1>Олеся Казарина</h1>
+            <p>комнатные растения с любовью</p>
+        </div>
+        <div class="header-right">
+            <div class="cart-status">Corporate: 0</div>
+            <button class="order-top-btn" onclick="openMaxGroup()">ЗАКАЗАТЬ</button>
+        </div>
     </header>
+    
+    <div class="hero">
+        <h2>Эстетика природы в вашем доме</h2>
+        <p>Бережно выращенные комнатные растения премиального качества.</p>
+        <div class="neon-line"></div>
+    </div>
+
     <div class="container">
         <div class="gallery">
             <div class="gallery-item">
                 <img src="adenium.jpg.png" alt="Адениум">
                 <h3>Адениум</h3>
-                <p>Экзотическое комнатное растение.</p>
+                <p class="desc">Изящный суккулент со скульптурным стволом бонсай.</p>
             </div>
             <div class="gallery-item">
                 <img src="croton.jpg" alt="Кротон">
                 <h3>Кротон</h3>
-                <p>Яркие декоративные листья.</p>
+                <p class="desc">Яркое лиственное растение с огненной палитрой листьев.</p>
             </div>
             <div class="gallery-item">
-                <img src="fialka.jpg" alt="Фиалка">
-                <h3>Фиалка</h3>
-                <p>Нежное и уютное цветение.</p>
+                <img src="fialka.jpg" alt="Узамбарская фиалка">
+                <h3>Узамбарская фиалка</h3>
+                <p class="desc">Нежное, пышно цветущее растение для домашнего уюта.</p>
             </div>
             <div class="gallery-item">
                 <img src="phalaenopsis.jpg" alt="Фаленопсис">
                 <h3>Фаленопсис</h3>
-                <p>Элегантная орхидея для интерьера.</p>
+                <p class="desc">Высокая орхидея — эталон минимализма и гармонии.</p>
             </div>
         </div>
     </div>
+
+    <script>
+        function openMaxGroup() {
+            // Кнопка ЗАКАЗАТЬ теперь сразу переводит клиента в вашу группу MAX
+            window.open('https://max.ru', '_blank');
+        }
+    </script>
 </body>
 </html>
