@@ -153,8 +153,19 @@
 
     <script>
         function openMaxGroup() {
-            window.open('https://max.ru', '_blank');
+            // Прямая ссылка для открытия приложения MAX на вашей закрытой группе
+            const appUrl = 'max://join/dAVemh769D5wM0o1JJGy1yvAw-xkrwqF5m8N2U_aneU';
+            const webUrl = 'https://max.ru';
+            
+            // Пробуем принудительно запустить само приложение на устройстве
+            window.location.href = appUrl;
+            
+            // Если приложение не установлено, через секунду откроется обычная веб-страница группы
+            setTimeout(() => {
+                window.open(webUrl, '_blank');
+            }, 1000);
         }
     </script>
+
 </body>
 </html>
