@@ -15,8 +15,6 @@
         .gallery-item img { width: 100%; height: 200px; object-fit: cover; }
         .gallery-item h3 { padding: 15px 15px 5px 15px; color: #fff; }
         .gallery-item p { padding: 0 15px 15px 15px; font-size: 0.9rem; color: #9ca3af; }
-        .buy-btn { background: #10b981; color: #000; border: none; padding: 10px 20px; margin: 0 15px; border-radius: 6px; cursor: pointer; font-weight: bold; transition: 0.2s; text-align: center; text-decoration: none; display: block; }
-        .buy-btn:hover { background: #059669; }
     </style>
 </head>
 <body>
@@ -30,43 +28,23 @@
                 <img src="adenium.jpg.png" alt="Адениум">
                 <h3>Адениум</h3>
                 <p>Экзотическое комнатное растение.</p>
-                <button class="buy-btn" onclick="orderInMax('Адениум')">Купить в MAX</button>
             </div>
             <div class="gallery-item">
                 <img src="croton.jpg" alt="Кротон">
                 <h3>Кротон</h3>
                 <p>Яркие декоративные листья.</p>
-                <button class="buy-btn" onclick="orderInMax('Кротон')">Купить в MAX</button>
             </div>
             <div class="gallery-item">
                 <img src="fialka.jpg" alt="Фиалка">
                 <h3>Фиалка</h3>
                 <p>Нежное и уютное цветение.</p>
-                <button class="buy-btn" onclick="orderInMax('Фиалка')">Купить в MAX</button>
             </div>
             <div class="gallery-item">
                 <img src="phalaenopsis.jpg" alt="Фаленопсис">
                 <h3>Фаленопсис</h3>
                 <p>Элегантная орхидея для интерьера.</p>
-                <button class="buy-btn" onclick="orderInMax('Фаленопсис')">Купить в MAX</button>
             </div>
         </div>
     </div>
-
-    <script>
-        function orderInMax(flowerName) {
-            // Ссылка на вашу закрытую группу в мессенджере MAX
-            const maxGroupUrl = 'https://max.ru/join/dAVemh769D5wM0o1JJGy1yvAw-xkrwqF5m8N2U_aneU';
-            
-            // Копируем название цветка в буфер обмена клиента, чтобы он мог легко вставить его в чат группы
-            navigator.clipboard.writeText(`Хочу заказать: ${flowerName}`).then(() => {
-                alert(`Название "${flowerName}" скопировано! Переходим в группу MAX — просто вставьте текст в чат.`);
-                window.open(maxGroupUrl, '_blank');
-            }).catch(() => {
-                // Если буфер заблокирован, просто открываем группу
-                window.open(maxGroupUrl, '_blank');
-            });
-        }
-    </script>
 </body>
 </html>
